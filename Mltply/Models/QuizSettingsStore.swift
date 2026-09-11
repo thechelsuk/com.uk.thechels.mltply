@@ -18,7 +18,6 @@ struct QuizSettingsStore {
         static let timerDuration = "timerDuration"
         static let soundEnabled = "soundEnabled"
         static let appColorScheme = "appColorScheme"
-        static let selectedAppIcon = "selectedAppIcon"
     }
 
     func loadMathOperations() -> MathOperationSettings? {
@@ -96,14 +95,5 @@ struct QuizSettingsStore {
 
     func save(appColorScheme: AppColorScheme) {
         defaults.set(appColorScheme.rawValue, forKey: Key.appColorScheme)
-    }
-
-    func loadSelectedAppIcon() -> AppIcon? {
-        guard let rawValue = defaults.string(forKey: Key.selectedAppIcon) else { return nil }
-        return AppIcon(rawValue: rawValue)
-    }
-
-    func save(selectedAppIcon: AppIcon) {
-        defaults.set(selectedAppIcon.rawValue, forKey: Key.selectedAppIcon)
     }
 }

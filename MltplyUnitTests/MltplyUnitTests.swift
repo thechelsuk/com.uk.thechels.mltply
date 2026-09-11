@@ -337,7 +337,6 @@ final class MltplyUnitTests: XCTestCase {
         XCTAssertNil(store.loadTimerDuration())
         XCTAssertNil(store.loadSoundEnabled())
         XCTAssertNil(store.loadAppColorScheme())
-        XCTAssertNil(store.loadSelectedAppIcon())
 
         var mathOperations = MathOperationSettings()
         mathOperations.squareEnabled = true
@@ -363,9 +362,6 @@ final class MltplyUnitTests: XCTestCase {
 
         store.save(appColorScheme: .dark)
         XCTAssertEqual(store.loadAppColorScheme(), .dark)
-
-        store.save(selectedAppIcon: .glass)
-        XCTAssertEqual(store.loadSelectedAppIcon(), .glass)
     }
 
     // MARK: - QuizViewModel Tests

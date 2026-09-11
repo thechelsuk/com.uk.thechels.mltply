@@ -8,21 +8,11 @@ struct SettingsView: View {
     @Binding var soundEnabled: Bool
     @Binding var questionMode: QuestionMode
     @Binding var practiceSettings: PracticeSettings
-    @Binding var selectedAppIcon: AppIcon
     @ObservedObject var viewModel: QuizViewModel
     @Environment(\.dismiss) private var dismiss
     @State private var showingClearHistoryAlert = false
     @State private var showingClearScoresAlert = false
     @State private var showingClearAchievementsAlert = false
-    
-    /// Available app icons based on iOS version
-    private var availableAppIcons: [AppIcon] {
-        if #available(iOS 26.0, *) {
-            return AppIcon.allCases
-        } else {
-            return AppIcon.allCases.filter { !$0.requiresIOS26 }
-        }
-    }
 
     var body: some View {
         NavigationStack {
@@ -39,22 +29,6 @@ struct SettingsView: View {
                         }
                         .pickerStyle(.segmented)
                         .frame(width: 120)
-                    }
-
-                    HStack {
-                        Text("App Icon")
-                        Spacer()
-                        Picker("App Icon", selection: $selectedAppIcon) {
-                            ForEach(availableAppIcons) { icon in
-                                Image(systemName: icon.systemIconName)
-                                    .tag(icon)
-                            }
-                        }
-                        .pickerStyle(.segmented)
-                        .frame(width: availableAppIcons.count > 2 ? 180 : 120)
-                        .onChange(of: selectedAppIcon) { _, newIcon in
-                            viewModel.changeAppIcon(to: newIcon)
-                        }
                     }
                 }
 
@@ -181,7 +155,6 @@ struct SettingsView: View {
         soundEnabled: .constant(true),
         questionMode: .constant(.random),
         practiceSettings: .constant(PracticeSettings()),
-        selectedAppIcon: .constant(.default),
         viewModel: QuizViewModel()
     )
 }
