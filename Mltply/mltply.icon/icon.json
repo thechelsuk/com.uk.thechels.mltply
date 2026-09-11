@@ -4,7 +4,7 @@
     {
       "layers" : [
         {
-          "blend-mode" : "multiply",
+          "blend-mode" : "overlay",
           "fill" : {
             "solid" : "extended-srgb:1.00000,0.55294,0.15686,1.00000"
           },
@@ -24,6 +24,7 @@
           ]
         },
         {
+          "blend-mode" : "overlay",
           "fill" : {
             "solid" : "extended-srgb:1.00000,0.55294,0.15686,1.00000"
           },
@@ -55,6 +56,7 @@
     {
       "layers" : [
         {
+          "blend-mode" : "plus-darker",
           "fill" : {
             "solid" : "extended-srgb:1.00000,0.80000,0.00000,1.00000"
           },
@@ -86,6 +88,7 @@
     {
       "layers" : [
         {
+          "blend-mode" : "hard-light",
           "fill" : {
             "solid" : "srgb:0.72091,1.00000,0.31487,1.00000"
           },

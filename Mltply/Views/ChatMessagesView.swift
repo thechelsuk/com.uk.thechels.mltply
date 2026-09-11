@@ -9,8 +9,7 @@ struct ChatMessagesView: View {
         ScrollViewReader { proxy in
             ScrollView {
                 VStack(alignment: .leading, spacing: 8) {
-                    ForEach(messages.indices, id: \.self) { idx in
-                        let message = messages[idx]
+                    ForEach(messages) { message in
                         HStack(alignment: .bottom, spacing: 8) {
                             if message.isUser {
                                 Spacer()
