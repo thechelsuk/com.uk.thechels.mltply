@@ -71,6 +71,20 @@ final class MltplyUnitTests: XCTestCase {
         XCTAssertEqual(QuestionMode.sequential.iconName, "arrow.up.arrow.down")
     }
 
+    // MARK: - NumberDifficulty Tests
+
+    func testNumberDifficultyRanges() {
+        XCTAssertEqual(NumberDifficulty.starter.range, 1...12)
+        XCTAssertEqual(NumberDifficulty.explorer.range, 1...100)
+        XCTAssertEqual(NumberDifficulty.champion.range, 1...1000)
+        XCTAssertEqual(NumberDifficulty.goat.range, 1...9999)
+
+        XCTAssertTrue(NumberDifficulty.starter.allowsGranularSelection)
+        XCTAssertFalse(NumberDifficulty.explorer.allowsGranularSelection)
+        XCTAssertFalse(NumberDifficulty.champion.allowsGranularSelection)
+        XCTAssertFalse(NumberDifficulty.goat.allowsGranularSelection)
+    }
+
     // MARK: - PracticeSettings Tests
 
     func testPracticeSettingsInitialization() {
@@ -146,263 +160,262 @@ final class MltplyUnitTests: XCTestCase {
         XCTAssertFalse(settings.hasSelectedNumbers)
     }
 
-    // MARK: - Mathematical Logic Tests
+    // MARK: - ScoreManager Tests
 
-    func testAdditionLogic() {
-        let a = 15
-        let b = 25
-        let result = a + b
-        XCTAssertEqual(result, 40)
+    func testScoreManagerAddCorrectAnswerIncrementsCurrentScore() {
+        let scoreManager = ScoreManager()
+        scoreManager.clearAllScores()
 
-        // Test edge cases
-        XCTAssertEqual(0 + 0, 0)
-        XCTAssertEqual(1 + 0, 1)
-        XCTAssertEqual(100 + 200, 300)
+        XCTAssertEqual(scoreManager.currentScore, 0)
+        scoreManager.addCorrectAnswer()
+        scoreManager.addCorrectAnswer()
+        XCTAssertEqual(scoreManager.currentScore, 2)
+
+        scoreManager.clearAllScores()
     }
 
-    func testSubtractionLogic() {
-        let a = 25
-        let b = 15
-        let result = a - b
-        XCTAssertEqual(result, 10)
+    func testScoreManagerSaveCurrentScoreTracksPersonalBestAndTopScores() {
+        let scoreManager = ScoreManager()
+        scoreManager.clearAllScores()
 
-        // Test edge cases
-        XCTAssertEqual(0 - 0, 0)
-        XCTAssertEqual(10 - 10, 0)
-        XCTAssertEqual(100 - 50, 50)
+        for _ in 0..<3 { scoreManager.addCorrectAnswer() }
+        scoreManager.saveCurrentScore()
+        XCTAssertEqual(scoreManager.currentScore, 0, "saveCurrentScore should reset the running score")
+        XCTAssertEqual(scoreManager.personalBest, 3)
 
-        // Ensure positive results for typical use case
-        let larger = max(20, 8)
-        let smaller = min(20, 8)
-        XCTAssertGreaterThanOrEqual(larger - smaller, 0)
+        for _ in 0..<7 { scoreManager.addCorrectAnswer() }
+        scoreManager.saveCurrentScore()
+
+        XCTAssertEqual(scoreManager.personalBest, 7)
+        XCTAssertEqual(scoreManager.topScores.map(\.value), [7, 3], "topScores should be sorted highest first")
+
+        scoreManager.clearAllScores()
+        XCTAssertTrue(scoreManager.allScores.isEmpty)
+        XCTAssertEqual(scoreManager.personalBest, 0)
     }
 
-    func testMultiplicationLogic() {
-        let a = 7
-        let b = 8
-        let result = a * b
-        XCTAssertEqual(result, 56)
+    func testScoreManagerDoesNotSaveZeroScore() {
+        let scoreManager = ScoreManager()
+        scoreManager.clearAllScores()
 
-        // Test times tables
-        XCTAssertEqual(1 * 12, 12)
-        XCTAssertEqual(12 * 12, 144)
-        XCTAssertEqual(5 * 6, 30)
-
-        // Test edge cases
-        XCTAssertEqual(0 * 100, 0)
-        XCTAssertEqual(1 * 999, 999)
+        scoreManager.saveCurrentScore() // currentScore is 0; should be a no-op
+        XCTAssertTrue(scoreManager.allScores.isEmpty)
     }
 
-    func testDivisionLogic() {
-        let dividend = 56
-        let divisor = 7
-        let result = dividend / divisor
-        XCTAssertEqual(result, 8)
+    // MARK: - QuestionHistory Tests
 
-        // Test clean divisions (no remainder)
-        XCTAssertEqual(144 / 12, 12)
-        XCTAssertEqual(100 / 10, 10)
-        XCTAssertEqual(48 / 6, 8)
+    func testQuestionHistoryTracksStreaksAndTotals() {
+        let history = QuestionHistory()
+        history.clearHistory()
 
-        // Test that we're creating problems with no remainder
-        for i in 1...12 {
-            for j in 1...12 {
-                let testDividend = i * j
-                let testResult = testDividend / j
-                XCTAssertEqual(testResult, i, "Division should result in whole numbers")
-                XCTAssertEqual(testDividend % j, 0, "Should have no remainder")
-            }
+        history.addRecord(question: "What is 2 + 2?", firstNumber: 2, secondNumber: 2, operation: .addition, correctAnswer: 4, userAnswer: 4)
+        history.addRecord(question: "What is 3 + 3?", firstNumber: 3, secondNumber: 3, operation: .addition, correctAnswer: 6, userAnswer: 6)
+        XCTAssertEqual(history.currentStreak, 2)
+        XCTAssertEqual(history.longestStreak, 2)
+        XCTAssertEqual(history.totalCorrect, 2)
+
+        history.addRecord(question: "What is 4 + 4?", firstNumber: 4, secondNumber: 4, operation: .addition, correctAnswer: 8, userAnswer: 99)
+        XCTAssertEqual(history.currentStreak, 0, "An incorrect answer should reset the current streak")
+        XCTAssertEqual(history.longestStreak, 2, "The longest streak is unaffected by a later miss")
+        XCTAssertEqual(history.totalCorrect, 2)
+
+        history.clearHistory()
+        XCTAssertTrue(history.records.isEmpty)
+    }
+
+    func testQuestionHistoryCompletesNumberAcrossAllMultipliers() {
+        let history = QuestionHistory()
+        history.clearHistory()
+
+        for multiplier in 1...12 {
+            history.addRecord(
+                question: "What is 5 x \(multiplier)?",
+                firstNumber: 5, secondNumber: multiplier,
+                operation: .multiplication,
+                correctAnswer: 5 * multiplier, userAnswer: 5 * multiplier
+            )
         }
+        XCTAssertTrue(history.hasCompletedNumber(5, operation: .multiplication))
+        XCTAssertFalse(history.hasCompletedNumber(6, operation: .multiplication))
+
+        history.clearHistory()
     }
 
-    // MARK: - Range and Boundary Tests
+    func testQuestionHistoryCorrectAnswersWithNumbersOverThreshold() {
+        let history = QuestionHistory()
+        history.clearHistory()
 
-    func testNumberRanges() {
-        let validRange = 1...12
+        history.addRecord(question: "What is 5 + 5?", firstNumber: 5, secondNumber: 5, operation: .addition, correctAnswer: 10, userAnswer: 10)
+        history.addRecord(question: "What is 50 + 5?", firstNumber: 50, secondNumber: 5, operation: .addition, correctAnswer: 55, userAnswer: 55)
+        // Incorrect answer with a large number shouldn't count.
+        history.addRecord(question: "What is 500 + 5?", firstNumber: 500, secondNumber: 5, operation: .addition, correctAnswer: 505, userAnswer: 0)
 
-        // Test all numbers in range are valid
-        for i in validRange {
-            XCTAssertGreaterThanOrEqual(i, 1)
-            XCTAssertLessThanOrEqual(i, 12)
-        }
+        XCTAssertEqual(history.correctAnswersWithNumbersOver(12), 1)
 
-        // Test set operations
-        let testSet = Set(validRange)
-        XCTAssertEqual(testSet.count, 12)
-        XCTAssertTrue(testSet.contains(1))
-        XCTAssertTrue(testSet.contains(12))
-        XCTAssertFalse(testSet.contains(0))
-        XCTAssertFalse(testSet.contains(13))
+        history.clearHistory()
     }
 
-    func testTimerLogic() {
-        var timeRemaining = 120 // 2 minutes
+    // MARK: - AchievementsManager Tests
 
-        // Test time formatting logic
-        let minutes = timeRemaining / 60
-        let seconds = timeRemaining % 60
-        let timeString = String(format: "%02d:%02d", minutes, seconds)
-        XCTAssertEqual(timeString, "02:00")
-
-        // Test countdown
-        timeRemaining -= 1
-        let newMinutes = timeRemaining / 60
-        let newSeconds = timeRemaining % 60
-        let newTimeString = String(format: "%02d:%02d", newMinutes, newSeconds)
-        XCTAssertEqual(newTimeString, "01:59")
-
-        // Test edge cases
-        timeRemaining = 60 // 1 minute
-        let edgeMinutes = timeRemaining / 60
-        let edgeSeconds = timeRemaining % 60
-        let edgeTimeString = String(format: "%02d:%02d", edgeMinutes, edgeSeconds)
-        XCTAssertEqual(edgeTimeString, "01:00")
-
-        timeRemaining = 5 // 5 seconds
-        let finalMinutes = timeRemaining / 60
-        let finalSeconds = timeRemaining % 60
-        let finalTimeString = String(format: "%02d:%02d", finalMinutes, finalSeconds)
-        XCTAssertEqual(finalTimeString, "00:05")
-    }
-
-    // MARK: - Question Generation Logic Tests
-
-    func testQuestionStringFormatting() {
-        // Test addition question format
-        let additionQuestion = "What is 5 + 3?"
-        XCTAssertTrue(additionQuestion.hasPrefix("What is "))
-        XCTAssertTrue(additionQuestion.hasSuffix("?"))
-        XCTAssertTrue(additionQuestion.contains("+"))
-
-        // Test multiplication question format
-        let multiplicationQuestion = "What is 7 × 8?"
-        XCTAssertTrue(multiplicationQuestion.hasPrefix("What is "))
-        XCTAssertTrue(multiplicationQuestion.hasSuffix("?"))
-        XCTAssertTrue(multiplicationQuestion.contains("×"))
-
-        // Test subtraction question format
-        let subtractionQuestion = "What is 15 - 7?"
-        XCTAssertTrue(subtractionQuestion.hasPrefix("What is "))
-        XCTAssertTrue(subtractionQuestion.hasSuffix("?"))
-        XCTAssertTrue(subtractionQuestion.contains("-"))
-
-        // Test division question format
-        let divisionQuestion = "What is 56 ÷ 8?"
-        XCTAssertTrue(divisionQuestion.hasPrefix("What is "))
-        XCTAssertTrue(divisionQuestion.hasSuffix("?"))
-        XCTAssertTrue(divisionQuestion.contains("÷"))
-    }
-
-    func testScoreCalculation() {
-        var score = 0
-
-        // Test adding correct answers
-        score += 1
-        XCTAssertEqual(score, 1)
-
-        score += 1
-        score += 1
-        XCTAssertEqual(score, 3)
-
-        // Test score reset
-        score = 0
-        XCTAssertEqual(score, 0)
-
-        // Test multiple additions
-        for _ in 1...10 {
-            score += 1
-        }
-        XCTAssertEqual(score, 10)
-    }
-
-    // MARK: - Input Validation Tests
-
-    func testAnswerValidation() {
-        // Test valid integer inputs
-        let validInputs = ["0", "5", "12", "100", "999"]
-
-        for input in validInputs {
-            let trimmedInput = input.trimmingCharacters(in: .whitespaces)
-            if let number = Int(trimmedInput) {
-                XCTAssertGreaterThanOrEqual(number, 0)
+    func testAchievementsManagerPreservesUnlockedStateAndAddsNewAchievementsOnMerge() {
+        let key = "MltplyAchievements"
+        let defaults = UserDefaults.standard
+        let originalData = defaults.data(forKey: key)
+        defer {
+            if let originalData {
+                defaults.set(originalData, forKey: key)
             } else {
-                XCTFail("Should be able to parse \(input) as integer")
+                defaults.removeObject(forKey: key)
             }
         }
 
-        // Test invalid inputs
-        let invalidInputs = ["", "abc", "5.5", "12a", " ", "five"]
+        // Simulate an old saved state, predating an achievement the current build ships with.
+        let staleAchievement = Achievement(
+            id: "streak_5",
+            type: .streak,
+            title: "On Fire",
+            description: "Get 5 correct answers in a row",
+            iconName: "🔥",
+            color: "FFB3BA",
+            requirement: 5,
+            isUnlocked: true,
+            unlockedDate: Date()
+        )
+        let encoded = try! JSONEncoder().encode([staleAchievement])
+        defaults.set(encoded, forKey: key)
 
-        for input in invalidInputs {
-            let trimmedInput = input.trimmingCharacters(in: .whitespaces)
-            let number = Int(trimmedInput)
-            XCTAssertNil(number, "Should not be able to parse \(input) as integer")
+        let manager = AchievementsManager()
+
+        // Previously unlocked achievements must survive the merge.
+        XCTAssertEqual(manager.achievements.first(where: { $0.id == "streak_5" })?.isUnlocked, true)
+        // Achievements only known to the current build must be merged in, not dropped.
+        XCTAssertTrue(manager.achievements.contains(where: { $0.id == "large_1000_50" }))
+        XCTAssertGreaterThan(manager.achievements.count, 1)
+    }
+
+    func testAchievementsManagerUnlocksStreakAchievement() {
+        let key = "MltplyAchievements"
+        let defaults = UserDefaults.standard
+        let originalData = defaults.data(forKey: key)
+        defer {
+            if let originalData {
+                defaults.set(originalData, forKey: key)
+            } else {
+                defaults.removeObject(forKey: key)
+            }
+        }
+        defaults.removeObject(forKey: key)
+
+        let manager = AchievementsManager()
+        let history = QuestionHistory()
+        history.clearHistory()
+
+        for i in 1...5 {
+            history.addRecord(question: "What is \(i) + 1?", firstNumber: i, secondNumber: 1, operation: .addition, correctAnswer: i + 1, userAnswer: i + 1)
         }
 
-        // Test whitespace handling
-        let inputWithSpaces = "  42  "
-        let trimmed = inputWithSpaces.trimmingCharacters(in: .whitespaces)
-        if let number = Int(trimmed) {
-            XCTAssertEqual(number, 42)
-        } else {
-            XCTFail("Should handle whitespace correctly")
+        let unlocked = manager.checkAndUnlockAchievements(questionHistory: history)
+        XCTAssertTrue(unlocked.contains(where: { $0.id == "streak_5" }))
+        XCTAssertTrue(manager.achievements.first(where: { $0.id == "streak_5" })?.isUnlocked ?? false)
+
+        history.clearHistory()
+    }
+
+    // MARK: - QuizSettingsStore Tests
+
+    func testQuizSettingsStoreRoundTripsAllSettings() {
+        let suiteName = "MltplyQuizSettingsStoreTests"
+        let defaults = UserDefaults(suiteName: suiteName)!
+        defer { defaults.removePersistentDomain(forName: suiteName) }
+
+        let store = QuizSettingsStore(defaults: defaults)
+
+        XCTAssertNil(store.loadMathOperations())
+        XCTAssertNil(store.loadPracticeSettings())
+        XCTAssertNil(store.loadQuestionMode())
+        XCTAssertNil(store.loadContinuousMode())
+        XCTAssertNil(store.loadTimerDuration())
+        XCTAssertNil(store.loadSoundEnabled())
+        XCTAssertNil(store.loadAppColorScheme())
+        XCTAssertNil(store.loadSelectedAppIcon())
+
+        var mathOperations = MathOperationSettings()
+        mathOperations.squareEnabled = true
+        store.save(mathOperations: mathOperations)
+        XCTAssertEqual(store.loadMathOperations(), mathOperations)
+
+        var practiceSettings = PracticeSettings()
+        practiceSettings.difficulty = .champion
+        store.save(practiceSettings: practiceSettings)
+        XCTAssertEqual(store.loadPracticeSettings(), practiceSettings)
+
+        store.save(questionMode: .sequential)
+        XCTAssertEqual(store.loadQuestionMode(), .sequential)
+
+        store.save(continuousMode: false)
+        XCTAssertEqual(store.loadContinuousMode(), false)
+
+        store.save(timerDuration: 5)
+        XCTAssertEqual(store.loadTimerDuration(), 5)
+
+        store.save(soundEnabled: true)
+        XCTAssertEqual(store.loadSoundEnabled(), true)
+
+        store.save(appColorScheme: .dark)
+        XCTAssertEqual(store.loadAppColorScheme(), .dark)
+
+        store.save(selectedAppIcon: .glass)
+        XCTAssertEqual(store.loadSelectedAppIcon(), .glass)
+    }
+
+    // MARK: - QuizViewModel Tests
+
+    func testTimeStringFormatting() {
+        let viewModel = QuizViewModel()
+        viewModel.timeRemaining = 125
+        XCTAssertEqual(viewModel.timeString, "02:05")
+        viewModel.timeRemaining = 5
+        XCTAssertEqual(viewModel.timeString, "00:05")
+    }
+
+    func testGenerateMathQuestionRespectsEnabledOperationsAndProducesCorrectAnswer() {
+        let viewModel = QuizViewModel()
+        viewModel.mathOperations = MathOperationSettings(
+            additionEnabled: false,
+            subtractionEnabled: false,
+            multiplicationEnabled: true,
+            divisionEnabled: false,
+            squareEnabled: false,
+            squareRootEnabled: false
+        )
+        viewModel.practiceSettings.difficulty = .starter
+        viewModel.practiceSettings.selectedNumbers = Set(1...12)
+
+        for _ in 0..<25 {
+            let question = viewModel.generateMathQuestion()
+            XCTAssertEqual(question.operation, .multiplication)
+            XCTAssertEqual(question.firstNumber * question.secondNumber, question.answer)
         }
     }
 
-    // MARK: - Array and Collection Tests
+    func testGenerateMathQuestionDivisionHasNoRemainder() {
+        let viewModel = QuizViewModel()
+        viewModel.mathOperations = MathOperationSettings(
+            additionEnabled: false,
+            subtractionEnabled: false,
+            multiplicationEnabled: false,
+            divisionEnabled: true,
+            squareEnabled: false,
+            squareRootEnabled: false
+        )
+        viewModel.practiceSettings.difficulty = .starter
+        viewModel.practiceSettings.selectedNumbers = Set(1...12)
 
-    func testScoreArrayOperations() {
-        var scores: [Int] = []
-
-        // Test adding scores
-        scores.append(5)
-        scores.append(8)
-        scores.append(3)
-        scores.append(10)
-
-        XCTAssertEqual(scores.count, 4)
-
-        // Test sorting (highest first)
-        let sortedScores = scores.sorted { $0 > $1 }
-        XCTAssertEqual(sortedScores, [10, 8, 5, 3])
-
-        // Test getting top scores
-        let topThree = Array(sortedScores.prefix(3))
-        XCTAssertEqual(topThree, [10, 8, 5])
-
-        // Test personal best (highest score)
-        let personalBest = sortedScores.first ?? 0
-        XCTAssertEqual(personalBest, 10)
-
-        // Test empty array
-        scores.removeAll()
-        XCTAssertTrue(scores.isEmpty)
-        XCTAssertEqual(scores.first ?? 0, 0)
-    }
-
-    // MARK: - String Processing Tests
-
-    func testMessageTextProcessing() {
-        let messages = [
-            "Hi! I'm Buddy your friendly robot.",
-            "What is 5 + 3?",
-            "Correct! Well done.",
-            "Time's up!"
-        ]
-
-        for message in messages {
-            XCTAssertFalse(message.isEmpty)
-            XCTAssertGreaterThan(message.count, 0)
+        for _ in 0..<25 {
+            let question = viewModel.generateMathQuestion()
+            XCTAssertEqual(question.operation, .division)
+            XCTAssertEqual(question.firstNumber % question.secondNumber, 0)
+            XCTAssertEqual(question.firstNumber / question.secondNumber, question.answer)
         }
-
-        // Test question detection
-        let questionMessage = "What is 7 × 8?"
-        XCTAssertTrue(questionMessage.hasPrefix("What is "))
-        XCTAssertTrue(questionMessage.hasSuffix("?"))
-
-        // Test non-question message
-        let statementMessage = "Great job!"
-        XCTAssertFalse(statementMessage.hasPrefix("What is "))
-        XCTAssertFalse(statementMessage.hasSuffix("?"))
     }
 }

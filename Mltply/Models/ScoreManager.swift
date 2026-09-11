@@ -65,9 +65,11 @@ class ScoreManager: ObservableObject {
     }
     
     private func loadScores() {
-        if let data = UserDefaults.standard.data(forKey: scoresKey),
-           let decoded = try? JSONDecoder().decode([Score].self, from: data) {
-            allScores = decoded.sorted { $0.value > $1.value }
+        guard let data = UserDefaults.standard.data(forKey: scoresKey) else { return }
+        do {
+            allScores = try JSONDecoder().decode([Score].self, from: data).sorted { $0.value > $1.value }
+        } catch {
+            AppLog.persistence.error("Failed to decode saved scores, resetting: \(error.localizedDescription)")
         }
     }
 }

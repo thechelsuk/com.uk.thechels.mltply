@@ -145,9 +145,11 @@ class QuestionHistory: ObservableObject {
     }
     
     private func loadHistory() {
-        if let data = UserDefaults.standard.data(forKey: historyKey),
-           let decoded = try? JSONDecoder().decode([QuestionRecord].self, from: data) {
-            records = decoded
+        guard let data = UserDefaults.standard.data(forKey: historyKey) else { return }
+        do {
+            records = try JSONDecoder().decode([QuestionRecord].self, from: data)
+        } catch {
+            AppLog.persistence.error("Failed to decode saved question history, resetting: \(error.localizedDescription)")
         }
     }
 }

@@ -40,6 +40,9 @@ class QuizViewModel: ObservableObject {
     // MARK: - Message Queue System
     private var messageQueue: [(text: String, accessibilityId: String?)] = []
     private var isProcessingQueue: Bool = false
+    // Bumped whenever the queue is reset so in-flight asyncAfter callbacks from the
+    // previous round can detect they're stale and bail out instead of appending late.
+    private var messageQueueGeneration: Int = 0
     
     // MARK: - Timer
     // Use the correct type for the timer publisher
@@ -63,6 +66,7 @@ class QuizViewModel: ObservableObject {
         
         isProcessingQueue = true
         let nextMessage = messageQueue.removeFirst()
+        let generation = messageQueueGeneration
         
         // Show typing indicator
         isBotTyping = true
@@ -75,6 +79,9 @@ class QuizViewModel: ObservableObject {
         let finalDelay = min(delay, 3.5) // Cap at 3.5 seconds max
         
         DispatchQueue.main.asyncAfter(deadline: .now() + finalDelay) {
+            // The queue was reset (e.g. play again / restart) while this was in flight.
+            guard self.messageQueueGeneration == generation else { return }
+            
             // Remove typing indicator
             if let idx = self.messages.firstIndex(where: { $0.isTypingIndicator }) {
                 self.messages.remove(at: idx)
@@ -90,10 +97,18 @@ class QuizViewModel: ObservableObject {
             
             // Process next message in queue after a brief pause
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                guard self.messageQueueGeneration == generation else { return }
                 self.isProcessingQueue = false
                 self.processMessageQueue()
             }
         }
+    }
+    
+    private func resetMessageQueue() {
+        messageQueue.removeAll()
+        isProcessingQueue = false
+        isBotTyping = false
+        messageQueueGeneration += 1
     }
     
     // Legacy support - replaced showBotMessage calls with queueBotMessage
@@ -201,9 +216,7 @@ class QuizViewModel: ObservableObject {
         timerActive = false
         hasStarted = false
         // Don't clear messages - preserve chat history
-        messageQueue.removeAll()
-        isProcessingQueue = false
-        isBotTyping = false
+        resetMessageQueue()
         
         // Add a separator message to indicate new round
         queueBotMessage(BotMessages.newRound)
@@ -254,9 +267,7 @@ class QuizViewModel: ObservableObject {
     
     func resetForWelcome() {
         messages = []
-        messageQueue.removeAll()
-        isProcessingQueue = false
-        isBotTyping = false
+        resetMessageQueue()
         hasStarted = false
         timerActive = false
         currentQuestion = nil
@@ -279,9 +290,7 @@ class QuizViewModel: ObservableObject {
         timerActive = false
         hasStarted = false
         // Don't clear messages when changing timer - preserve chat history
-        messageQueue.removeAll()
-        isProcessingQueue = false
-        isBotTyping = false
+        resetMessageQueue()
         
         // Only show onboarding if there are no existing messages (first time setup)
         if messages.isEmpty {
@@ -513,102 +522,51 @@ class QuizViewModel: ObservableObject {
     }
     
     // MARK: - Settings Persistence
-    private static let mathOperationsKey = "mathOperationsSettings"
-    private static let practiceSettingsKey = "practiceSettings"
-    private static let questionModeKey = "questionMode"
-    private static let continuousModeKey = "continuousMode"
-    private static let timerDurationKey = "timerDuration"
-    private static let soundEnabledKey = "soundEnabled"
-    private static let appColorSchemeKey = "appColorScheme"
-    private static let selectedAppIconKey = "selectedAppIcon"
+    private let settingsStore = QuizSettingsStore()
     
     private func loadSettings() {
-        // Load math operations
-        if let data = UserDefaults.standard.data(forKey: Self.mathOperationsKey),
-           let decoded = try? JSONDecoder().decode(MathOperationSettings.self, from: data) {
-            mathOperations = decoded
+        if let value = settingsStore.loadMathOperations() {
+            mathOperations = value
         }
-        
-        // Load practice settings
-        if let data = UserDefaults.standard.data(forKey: Self.practiceSettingsKey),
-           let decoded = try? JSONDecoder().decode(PracticeSettings.self, from: data) {
-            practiceSettings = decoded
+        if let value = settingsStore.loadPracticeSettings() {
+            practiceSettings = value
         }
-        
-        // Load question mode
-        if let rawValue = UserDefaults.standard.string(forKey: Self.questionModeKey),
-           let mode = QuestionMode(rawValue: rawValue) {
-            questionMode = mode
+        if let value = settingsStore.loadQuestionMode() {
+            questionMode = value
         }
-        
-        // Load continuous mode
-        if UserDefaults.standard.object(forKey: Self.continuousModeKey) != nil {
-            continuousMode = UserDefaults.standard.bool(forKey: Self.continuousModeKey)
+        if let value = settingsStore.loadContinuousMode() {
+            continuousMode = value
         }
-        
-        // Load timer duration
-        if UserDefaults.standard.object(forKey: Self.timerDurationKey) != nil {
-            let saved = UserDefaults.standard.integer(forKey: Self.timerDurationKey)
-            if saved > 0 {
-                timerDuration = saved
-                timeRemaining = saved * 60
-            }
+        if let value = settingsStore.loadTimerDuration() {
+            timerDuration = value
+            timeRemaining = value * 60
         }
-        
-        // Load sound enabled
-        if UserDefaults.standard.object(forKey: Self.soundEnabledKey) != nil {
-            soundEnabled = UserDefaults.standard.bool(forKey: Self.soundEnabledKey)
+        if let value = settingsStore.loadSoundEnabled() {
+            soundEnabled = value
         }
-        
-        // Load app color scheme
-        if let rawValue = UserDefaults.standard.string(forKey: Self.appColorSchemeKey),
-           let scheme = AppColorScheme(rawValue: rawValue) {
-            appColorScheme = scheme
+        if let value = settingsStore.loadAppColorScheme() {
+            appColorScheme = value
         }
-        
-        // Load selected app icon
-        if let rawValue = UserDefaults.standard.string(forKey: Self.selectedAppIconKey),
-           let icon = AppIcon(rawValue: rawValue) {
-            selectedAppIcon = icon
+        if let value = settingsStore.loadSelectedAppIcon() {
+            selectedAppIcon = value
         }
     }
     
     func saveSettings() {
-        // Save math operations
-        if let encoded = try? JSONEncoder().encode(mathOperations) {
-            UserDefaults.standard.set(encoded, forKey: Self.mathOperationsKey)
-        }
-        
-        // Save practice settings
-        if let encoded = try? JSONEncoder().encode(practiceSettings) {
-            UserDefaults.standard.set(encoded, forKey: Self.practiceSettingsKey)
-        }
-        
-        // Save question mode
-        UserDefaults.standard.set(questionMode.rawValue, forKey: Self.questionModeKey)
-        
-        // Save continuous mode
-        UserDefaults.standard.set(continuousMode, forKey: Self.continuousModeKey)
-        
-        // Save timer duration
-        UserDefaults.standard.set(timerDuration, forKey: Self.timerDurationKey)
-        
-        // Save sound enabled
-        UserDefaults.standard.set(soundEnabled, forKey: Self.soundEnabledKey)
-        
-        // Save app color scheme
-        UserDefaults.standard.set(appColorScheme.rawValue, forKey: Self.appColorSchemeKey)
-        
-        // Save selected app icon
-        UserDefaults.standard.set(selectedAppIcon.rawValue, forKey: Self.selectedAppIconKey)
+        settingsStore.save(mathOperations: mathOperations)
+        settingsStore.save(practiceSettings: practiceSettings)
+        settingsStore.save(questionMode: questionMode)
+        settingsStore.save(continuousMode: continuousMode)
+        settingsStore.save(timerDuration: timerDuration)
+        settingsStore.save(soundEnabled: soundEnabled)
+        settingsStore.save(appColorScheme: appColorScheme)
+        settingsStore.save(selectedAppIcon: selectedAppIcon)
     }
     
     // MARK: - Message History Management
     func clearMessageHistory() {
         messages.removeAll()
-        messageQueue.removeAll()
-        isProcessingQueue = false
-        isBotTyping = false
+        resetMessageQueue()
         
         // Show fresh welcome sequence
         showOnboardingSequence()

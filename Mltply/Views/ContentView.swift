@@ -5,13 +5,8 @@
 //  Created by Mat Benfield on 11/05/2025.
 //
 
-import AVFoundation
 import Foundation
 import SwiftUI
-
-#if canImport(UIKit)
-    import UIKit  // For haptic feedback
-#endif
 
 struct ContentView: View {
     @StateObject private var viewModel = QuizViewModel()
@@ -127,27 +122,6 @@ struct ContentView: View {
         }
     }
 }
-
-// MARK: - Extensions
-extension ContentView {
-    fileprivate func scrollToLastMessage() {
-        NotificationCenter.default.post(
-            name: NSNotification.Name("ScrollToLastMessage"), object: nil)
-    }
-
-    fileprivate func playMessageSound() {
-        if let url = Bundle.main.url(forResource: "Message", withExtension: "wav") {
-            viewModel.audioPlayer = try? AVAudioPlayer(contentsOf: url)
-            viewModel.audioPlayer?.play()
-            return
-        }
-        if let asset = NSDataAsset(name: "Message") {
-            viewModel.audioPlayer = try? AVAudioPlayer(data: asset.data)
-            viewModel.audioPlayer?.play()
-        }
-    }
-}
-
 
 #Preview {
         ContentView()

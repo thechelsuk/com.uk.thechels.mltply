@@ -1,62 +1,46 @@
 {
-  "fill" : {
-    "automatic-gradient" : "extended-srgb:0.00000,0.53333,1.00000,1.00000"
-  },
+  "fill" : "automatic",
   "groups" : [
     {
       "layers" : [
         {
-          "fill-specializations" : [
+          "blend-mode" : "multiply",
+          "fill" : {
+            "solid" : "extended-srgb:1.00000,0.55294,0.15686,1.00000"
+          },
+          "image-name" : "Ellipse 2.svg",
+          "name" : "Ellipse 2",
+          "position-specializations" : [
             {
+              "idiom" : "square",
               "value" : {
-                "solid" : "extended-gray:0.00000,1.00000"
-              }
-            },
-            {
-              "appearance" : "dark",
-              "value" : {
-                "solid" : "extended-gray:1.00000,1.00000"
-              }
-            },
-            {
-              "appearance" : "tinted",
-              "value" : {
-                "solid" : "extended-gray:1.00000,1.00000"
+                "scale" : 1.5,
+                "translation-in-points" : [
+                  250,
+                  250
+                ]
               }
             }
-          ],
-          "image-name" : "arrow_down 2.svg",
-          "name" : "arrow_down 2"
+          ]
         },
         {
-          "fill-specializations" : [
+          "fill" : {
+            "solid" : "extended-srgb:1.00000,0.55294,0.15686,1.00000"
+          },
+          "image-name" : "Ellipse 1.svg",
+          "name" : "Ellipse 1",
+          "position-specializations" : [
             {
+              "idiom" : "square",
               "value" : {
-                "solid" : "extended-gray:0.00000,1.00000"
-              }
-            },
-            {
-              "appearance" : "dark",
-              "value" : {
-                "solid" : "extended-gray:1.00000,1.00000"
-              }
-            },
-            {
-              "appearance" : "tinted",
-              "value" : {
-                "solid" : "extended-gray:1.00000,1.00000"
+                "scale" : 1.5,
+                "translation-in-points" : [
+                  -250,
+                  -250
+                ]
               }
             }
-          ],
-          "image-name" : "Divide 2.svg",
-          "name" : "Divide 2",
-          "position" : {
-            "scale" : 1,
-            "translation-in-points" : [
-              191.1667,
-              -250.9140625
-            ]
-          }
+          ]
         }
       ],
       "shadow" : {
@@ -65,17 +49,29 @@
       },
       "translucency" : {
         "enabled" : true,
-        "value" : 0.5
+        "value" : 0.3
       }
     },
     {
       "layers" : [
         {
           "fill" : {
-            "solid" : "extended-gray:1.00000,1.00000"
+            "solid" : "extended-srgb:1.00000,0.80000,0.00000,1.00000"
           },
-          "image-name" : "person-large.svg",
-          "name" : "person-large"
+          "image-name" : "minus 2.svg",
+          "name" : "minus 2",
+          "position-specializations" : [
+            {
+              "idiom" : "square",
+              "value" : {
+                "scale" : 2,
+                "translation-in-points" : [
+                  0,
+                  0
+                ]
+              }
+            }
+          ]
         }
       ],
       "shadow" : {
@@ -84,7 +80,38 @@
       },
       "translucency" : {
         "enabled" : true,
-        "value" : 0.5
+        "value" : 0.3
+      }
+    },
+    {
+      "layers" : [
+        {
+          "fill" : {
+            "solid" : "srgb:0.72091,1.00000,0.31487,1.00000"
+          },
+          "image-name" : "divider.svg",
+          "name" : "divider",
+          "position-specializations" : [
+            {
+              "idiom" : "square",
+              "value" : {
+                "scale" : 2,
+                "translation-in-points" : [
+                  0,
+                  0
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.3
       }
     }
   ],

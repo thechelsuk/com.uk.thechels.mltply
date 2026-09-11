@@ -34,8 +34,8 @@ class AchievementsManager: ObservableObject {
     private let achievementsKey = "MltplyAchievements"
 
     init() {
-        initializeAchievements()
         loadAchievements()
+        initializeAchievements()
     }
 
     private func initializeAchievements() {
@@ -192,11 +192,16 @@ class AchievementsManager: ObservableObject {
         if achievements.isEmpty {
             achievements = defaultAchievements
         } else {
-            // Merge new achievements with existing ones
+            // Merge new achievements with existing ones, preserving unlocked state
+            var didAddNewAchievement = false
             for newAchievement in defaultAchievements {
                 if !achievements.contains(where: { $0.id == newAchievement.id }) {
                     achievements.append(newAchievement)
+                    didAddNewAchievement = true
                 }
+            }
+            if didAddNewAchievement {
+                saveAchievements()
             }
         }
     }
@@ -303,9 +308,11 @@ class AchievementsManager: ObservableObject {
     }
 
     private func loadAchievements() {
-        if let data = UserDefaults.standard.data(forKey: achievementsKey),
-           let decoded = try? JSONDecoder().decode([Achievement].self, from: data) {
-            achievements = decoded
+        guard let data = UserDefaults.standard.data(forKey: achievementsKey) else { return }
+        do {
+            achievements = try JSONDecoder().decode([Achievement].self, from: data)
+        } catch {
+            AppLog.persistence.error("Failed to decode saved achievements, resetting: \(error.localizedDescription)")
         }
     }
 }
