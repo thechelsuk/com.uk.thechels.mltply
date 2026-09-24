@@ -94,6 +94,24 @@ struct SettingsView: View {
                     }
                 }
 
+                Section {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Label("Printable Workbooks", systemImage: "book.closed")
+                            .font(.headline)
+                        Text("Grown-ups: Printable Mltply maths workbooks for Years 1–7, with answers, are available at:")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                        // Verbatim so the address is plain text, never a tappable link
+                        Text(verbatim: "shop.thechels.uk")
+                            .font(.subheadline.bold())
+                            .accessibilityIdentifier("workbooksShopAddress")
+                    }
+                    .padding(.vertical, 4)
+                    .accessibilityElement(children: .combine)
+                } header: {
+                    Text("For Grown-ups")
+                }
+
                 Section("Legal") {
                     NavigationLink("Terms of Use") {
                         TermsView()
