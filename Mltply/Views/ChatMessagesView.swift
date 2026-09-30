@@ -28,11 +28,11 @@ struct ChatMessagesView: View {
                                     if let tapback = message.tapback {
                                         Group {
                                             if tapback == .correct {
-                                                Text("🎉")
+                                                Text(verbatim: "🎉")
                                                     .font(.system(size: 24))
                                                     .padding(.top, 4)
                                             } else if tapback == .incorrect {
-                                                Text("👎")
+                                                Text(verbatim: "👎")
                                                     .font(.system(size: 24))
                                                     .padding(.top, 4)
                                             }

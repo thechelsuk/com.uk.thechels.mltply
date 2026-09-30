@@ -1,3 +1,4 @@
+import UIKit
 import XCTest
 
 @testable import Mltply
@@ -63,6 +64,22 @@ final class AchievementTests: XCTestCase {
     func testRosetteAchievementUsesRosetteEmojiInChat() {
         let dedicated = AchievementsManager.makeDefaultAchievements().first { $0.id == "total_50" }
         XCTAssertEqual(dedicated?.icon.chatEmoji, "🏵️")
+    }
+
+    func testEveryAchievementSymbolExists() {
+        for achievement in AchievementsManager.makeDefaultAchievements() {
+            guard case .symbol(let name, _) = achievement.icon else { continue }
+            XCTAssertNotNil(UIImage(systemName: name), "\(achievement.id) uses unknown SF Symbol \(name)")
+        }
+    }
+
+    func testEachTierOfALargeNumberGroupHasItsOwnEmoji() {
+        let all = AchievementsManager.makeDefaultAchievements()
+        func emoji(_ id: String) -> String? { all.first { $0.id == id }?.icon.chatEmoji }
+
+        XCTAssertEqual([emoji("large_12_10"), emoji("large_12_25"), emoji("large_12_50")], ["🧭", "⛰️", "🌍"])
+        XCTAssertEqual([emoji("large_100_10"), emoji("large_100_25"), emoji("large_100_50")], ["🥉", "🥈", "🥇"])
+        XCTAssertEqual([emoji("large_1000_10"), emoji("large_1000_25"), emoji("large_1000_50")], ["🐐", "🔥", "👑"])
     }
 
     func testUnlockedMessagesAreCongratulatoryAndPastTense() {

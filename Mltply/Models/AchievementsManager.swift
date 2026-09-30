@@ -196,14 +196,14 @@ class AchievementsManager: ObservableObject {
 
         // Large number milestones
         let largeNumberMilestones: [(Int, Int, String, String, String)] = [
-            (12, 10, "map.fill", "🗺️", "B5EAD7"),
-            (12, 25, "map.fill", "🗺️", "98D8C8"),
-            (12, 50, "map.fill", "🗺️", "7BC8B8"),
-            (100, 10, "trophy.fill", "🏆", "FFDAC1"),
-            (100, 25, "trophy.fill", "🏆", "FFCBA4"),
-            (100, 50, "trophy.fill", "🏆", "FFB987"),
-            (1000, 10, "crown.fill", "👑", "C7CEEA"),
-            (1000, 25, "crown.fill", "👑", "B3BAE0"),
+            (12, 10, "safari.fill", "🧭", "B5EAD7"),
+            (12, 25, "mountain.2.fill", "⛰️", "98D8C8"),
+            (12, 50, "globe.europe.africa.fill", "🌍", "7BC8B8"),
+            (100, 10, "trophy.fill", "🥉", "FFDAC1"),
+            (100, 25, "trophy.fill", "🥈", "FFCBA4"),
+            (100, 50, "trophy.fill", "🥇", "FFB987"),
+            (1000, 10, "crown.fill", "🐐", "C7CEEA"),
+            (1000, 25, "crown.fill", "🔥", "B3BAE0"),
             (1000, 50, "crown.fill", "👑", "9FA6D6")
         ]
 
