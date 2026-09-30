@@ -152,17 +152,16 @@ struct AchievementBadge: View {
                     .frame(width: 70, height: 70)
                     .shadow(color: achievement.isUnlocked ? achievement.pastelColor.opacity(0.3) : .clear, radius: 8)
                 
-                if achievement.iconName.count == 1 || achievement.iconName.contains("️") {
-                    // Emoji
-                    Text(achievement.iconName)
+                switch achievement.icon {
+                case .emoji(let emoji):
+                    Text(emoji)
                         .font(.system(size: 32))
-                } else {
-                    // SF Symbol
-                    Image(systemName: achievement.iconName)
+                case .symbol(let name, _):
+                    Image(systemName: name)
                         .font(.system(size: 28))
                         .foregroundStyle(achievement.isUnlocked ? .white : .gray)
                 }
-                
+
                 if !achievement.isUnlocked {
                     Circle()
                         .fill(.black.opacity(0.5))

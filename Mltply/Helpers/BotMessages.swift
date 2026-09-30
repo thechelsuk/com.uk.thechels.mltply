@@ -14,7 +14,7 @@ struct BotMessages {
     static let letsGo = "OK, great, Let's go!"
     static let newRound = "Starting a new round!"
     
-    static func achievementUnlocked(title: String, icon: String, description: String) -> String {
-        "🏆 Achievement Unlocked: \(title)! \(icon) - \(description)"
+    static func achievementUnlocked(_ achievement: Achievement) -> String {
+        "\(achievement.icon.chatEmoji) Achievement unlocked: \(achievement.title)\n\(achievement.unlockedMessage)"
     }
 }

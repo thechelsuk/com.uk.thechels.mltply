@@ -142,14 +142,7 @@ class QuizViewModel: ObservableObject {
                 correctAnswers += 1
                 
                 // Check for achievements after each correct answer
-                let newAchievements = achievementsManager.checkAndUnlockAchievements(questionHistory: questionHistory)
-                for achievement in newAchievements {
-                    queueBotMessage(BotMessages.achievementUnlocked(
-                        title: achievement.title,
-                        icon: achievement.iconName,
-                        description: achievement.description
-                    ))
-                }
+                announceNewAchievements()
             } else {
                 // Save score and reset for wrong answer
                 if scoreManager.currentScore > 0 {
@@ -163,14 +156,7 @@ class QuizViewModel: ObservableObject {
                 queueBotMessage("The correct answer is \(question.answer)")
                 
                 // Still check achievements (total correct might have unlocked something)
-                let newAchievements = achievementsManager.checkAndUnlockAchievements(questionHistory: questionHistory)
-                for achievement in newAchievements {
-                    queueBotMessage(BotMessages.achievementUnlocked(
-                        title: achievement.title,
-                        icon: achievement.iconName,
-                        description: achievement.description
-                    ))
-                }
+                announceNewAchievements()
             }
             totalQuestions += 1
             userInput = ""
@@ -188,6 +174,13 @@ class QuizViewModel: ObservableObject {
         }
     }
     
+    private func announceNewAchievements() {
+        let unlocked = achievementsManager.checkAndUnlockAchievements(questionHistory: questionHistory)
+        for achievement in unlocked {
+            queueBotMessage(BotMessages.achievementUnlocked(achievement))
+        }
+    }
+
     func showScoreSummary() {
         // Save current score when timer ends
         if scoreManager.currentScore > 0 {
