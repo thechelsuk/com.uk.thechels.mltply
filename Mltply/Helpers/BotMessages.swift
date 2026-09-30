@@ -29,7 +29,10 @@ enum BotMessages {
     }
 
     static var encouragements: [String] {
-        (1...8).map { String(localized: String.LocalizationValue("encouragement.\($0)")) }
+        (1...8).map { index in
+            let key = "encouragement.\(index)"
+            return String(localized: String.LocalizationValue(key))
+        }
     }
 
     static func question(_ operation: MathOperation, _ first: Int, _ second: Int) -> String {

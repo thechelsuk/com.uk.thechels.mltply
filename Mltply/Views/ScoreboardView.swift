@@ -68,7 +68,7 @@ struct ScoreboardView: View {
                                             .fill(rankColor(for: index))
                                             .frame(width: 30, height: 30)
                                         
-                                        Text("\(index + 1)")
+                                        Text(verbatim: "\(index + 1)")
                                             .font(.caption)
                                             .fontWeight(.bold)
                                             .foregroundColor(.white)

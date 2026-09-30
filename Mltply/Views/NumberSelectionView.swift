@@ -22,10 +22,10 @@ struct NumberSelectionView: View {
                 Section("Select Numbers for Practice") {
                     ForEach(1...12, id: \.self) { number in
                         HStack {
-                            Text("\(number)")
+                            Text(verbatim: "\(number)")
                                 .font(.headline)
                             Spacer()
-                            Toggle("", isOn: Binding(
+                            Toggle(isOn: Binding(
                                 get: { practiceSettings.selectedNumbers.contains(number) },
                                 set: { isSelected in
                                     if isSelected {
@@ -34,7 +34,7 @@ struct NumberSelectionView: View {
                                         practiceSettings.selectedNumbers.remove(number)
                                     }
                                 }
-                            ))
+                            )) { EmptyView() }
                         }
                         .contentShape(Rectangle())
                         .onTapGesture {
