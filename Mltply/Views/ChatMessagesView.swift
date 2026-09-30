@@ -160,7 +160,7 @@ struct TypingIndicatorView: View {
 
 #Preview {
     let sampleMessages = [
-        ChatMessage(text: "Hi! I'm Axl your friendly robot. Let's get ready to play!", isUser: false),
+        ChatMessage(text: "Hi! I'm Buddy your friendly robot. Let's get ready to play!", isUser: false),
         ChatMessage(text: "Let's start!", isUser: true),
         ChatMessage(text: "What is 5 + 3?", isUser: false),
         ChatMessage(text: "8", isUser: true, tapback: .correct)
