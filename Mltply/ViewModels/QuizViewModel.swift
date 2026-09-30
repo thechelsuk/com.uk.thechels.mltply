@@ -2,12 +2,6 @@ import AVFoundation
 import Foundation
 import SwiftUI
 
-// MARK: - Models and BotMessages
-// These are in Models.swift and BotMessages.swift
-// If using modules, import Mltply
-
-// Import all models and bot messages
-
 class QuizViewModel: ObservableObject {
     // MARK: - Published State
     @Published var timeRemaining: Int = 120
@@ -112,11 +106,6 @@ class QuizViewModel: ObservableObject {
         isProcessingQueue = false
         isBotTyping = false
         messageQueueGeneration += 1
-    }
-    
-    // Legacy support - replaced showBotMessage calls with queueBotMessage
-    func showBotMessage(_ text: String, delay: Double = 2.0) {
-        queueBotMessage(text)
     }
     
     func sendMessage() {

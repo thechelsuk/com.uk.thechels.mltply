@@ -87,15 +87,6 @@ class QuestionHistory: ObservableObject {
         return answeredQuestions.isSuperset(of: requiredQuestions)
     }
 
-    // Check if user has correctly answered a specific square or square root question
-    func hasAnsweredCorrectly(number: Int, operation: MathOperation) -> Bool {
-        records.contains { record in
-            record.isCorrect &&
-            record.operation == operation &&
-            record.firstNumber == number
-        }
-    }
-
     // Check if all squares in a given base range have been answered correctly
     // e.g., range 1...12 means 1², 2², 3², ... 12²
     func hasCompletedAllSquaresInRange(_ range: ClosedRange<Int>) -> Bool {
