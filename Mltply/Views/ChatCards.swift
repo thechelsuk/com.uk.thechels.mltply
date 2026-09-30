@@ -81,7 +81,7 @@ struct ChatCardView: View {
                 onSelect()
                 // Show operations set as a user message
                 if let addMessage = addMessage {
-                    let enabledOperations = getEnabledOperationsText()
+                    let enabledOperations = mathOperations.summary
                     addMessage("Math operations set: \(enabledOperations)")
                 }
             }) {
@@ -96,34 +96,11 @@ struct ChatCardView: View {
             .disabled(!mathOperations.hasAtLeastOneEnabled)
 
             if showMathOperationsResult {
-                Text("Operations set: \(getEnabledOperationsText())")
+                Text("Operations set: \(mathOperations.summary)")
                     .font(.subheadline)
                     .foregroundStyle(.blue)
                     .padding(.top, 4)
             }
-        }
-    }
-
-    private func getEnabledOperationsText() -> String {
-        var operations: [String] = []
-        if mathOperations.additionEnabled { operations.append("Addition") }
-        if mathOperations.subtractionEnabled { operations.append("Subtraction") }
-        if mathOperations.multiplicationEnabled { operations.append("Multiplication") }
-        if mathOperations.divisionEnabled { operations.append("Division") }
-        if mathOperations.squareEnabled { operations.append("Squares") }
-        if mathOperations.squareRootEnabled { operations.append("√ Roots") }
-
-        if operations.count == 0 {
-            return "None"
-        } else if operations.count == 1 {
-            return operations[0]
-        } else if operations.count == 2 {
-            return "\(operations[0]) and \(operations[1])"
-        } else if operations.count == 6 {
-            return "All operations"
-        } else {
-            let allButLast = operations.dropLast().joined(separator: ", ")
-            return "\(allButLast) and \(operations.last!)"
         }
     }
 

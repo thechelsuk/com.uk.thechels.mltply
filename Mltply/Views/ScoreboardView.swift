@@ -6,17 +6,8 @@ struct ScoreboardView: View {
     @ObservedObject var questionHistory: QuestionHistory
     @Environment(\.dismiss) private var dismiss
     
-    private let encouragementMessages = [
-        "Amazing work! Keep it up! 🌟",
-        "You're getting better every day! 💪",
-        "Math champion in the making! 🏆",
-        "Fantastic progress! 🎉",
-        "Keep practicing, you're doing great! ⭐",
-        "Every question makes you stronger! 🚀",
-        "You're a math superstar! ✨",
-        "Practice makes perfect! 🎯"
-    ]
-    
+    private let encouragementMessages = BotMessages.encouragements
+
     var body: some View {
         NavigationView {
             ScrollView {
@@ -43,7 +34,7 @@ struct ScoreboardView: View {
                     .padding(.top, 20)
                     
                     // Encouragement message
-                    Text(encouragementMessages.randomElement() ?? "Keep practicing!")
+                    Text(encouragementMessages.randomElement() ?? BotMessages.encouragementFallback)
                         .font(.headline)
                         .multilineTextAlignment(.center)
                         .foregroundColor(.secondary)
@@ -77,7 +68,7 @@ struct ScoreboardView: View {
                                             .fill(rankColor(for: index))
                                             .frame(width: 30, height: 30)
                                         
-                                        Text("\(index + 1)")
+                                        Text(verbatim: "\(index + 1)")
                                             .font(.caption)
                                             .fontWeight(.bold)
                                             .foregroundColor(.white)

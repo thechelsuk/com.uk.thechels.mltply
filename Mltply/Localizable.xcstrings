@@ -1,0 +1,2442 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%lld correct" : {
+      "comment" : "Score row.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld correct"
+          }
+        }
+      }
+    },
+    "%lld of %lld unlocked" : {
+      "comment" : "Achievements header. 1: unlocked, 2: total.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld of %lld unlocked"
+          }
+        }
+      }
+    },
+    "%lldm" : {
+      "comment" : "Timer length in minutes.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lldm"
+          }
+        }
+      }
+    },
+    "√ Roots" : {
+      "comment" : "Shown in ChatCards.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "√ Roots"
+          }
+        }
+      }
+    },
+    "achievement.large_12_10.title" : {
+      "comment" : "Large-number achievement title.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rising explorer award"
+          }
+        }
+      }
+    },
+    "achievement.large_12_25.title" : {
+      "comment" : "Large-number achievement title.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Star explorer award"
+          }
+        }
+      }
+    },
+    "achievement.large_12_50.title" : {
+      "comment" : "Large-number achievement title.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Super explorer award"
+          }
+        }
+      }
+    },
+    "achievement.large_100_10.title" : {
+      "comment" : "Large-number achievement title.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rising champion award"
+          }
+        }
+      }
+    },
+    "achievement.large_100_25.title" : {
+      "comment" : "Large-number achievement title.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Star champion award"
+          }
+        }
+      }
+    },
+    "achievement.large_100_50.title" : {
+      "comment" : "Large-number achievement title.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Super champion award"
+          }
+        }
+      }
+    },
+    "achievement.large_1000_10.title" : {
+      "comment" : "Large-number achievement title.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rising GOAT award"
+          }
+        }
+      }
+    },
+    "achievement.large_1000_25.title" : {
+      "comment" : "Large-number achievement title.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Super GOAT award"
+          }
+        }
+      }
+    },
+    "achievement.large_1000_50.title" : {
+      "comment" : "Large-number achievement title.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ultimate GOAT award"
+          }
+        }
+      }
+    },
+    "achievement.large.goal" : {
+      "comment" : "1: how many questions, 2: threshold.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Answer %1$lld questions with numbers over %2$lld"
+          }
+        }
+      }
+    },
+    "achievement.large.unlocked" : {
+      "comment" : "1: how many questions, 2: threshold.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Congratulations! You've answered %1$lld questions with numbers over %2$lld."
+          }
+        }
+      }
+    },
+    "achievement.number.goal" : {
+      "comment" : "1: number, 2: operation noun.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Complete all %1$lld %2$@ problems"
+          }
+        }
+      }
+    },
+    "achievement.number.title" : {
+      "comment" : "Times-table style mastery title. 1: number, 2: operation name.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld %2$@ Master"
+          }
+        }
+      }
+    },
+    "achievement.number.unlocked" : {
+      "comment" : "1: number, 2: operation noun.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Congratulations! You've completed all %1$lld %2$@ problems."
+          }
+        }
+      }
+    },
+    "achievement.sqrt_explorer.goal" : {
+      "comment" : "Goal shown while locked.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Master square roots √169 to √9801"
+          }
+        }
+      }
+    },
+    "achievement.sqrt_explorer.title" : {
+      "comment" : "Mastery achievement title.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Root Explorer"
+          }
+        }
+      }
+    },
+    "achievement.sqrt_explorer.unlocked" : {
+      "comment" : "Past-tense celebration.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Congratulations! You've mastered square roots √169 to √9801."
+          }
+        }
+      }
+    },
+    "achievement.sqrt_starter.goal" : {
+      "comment" : "Goal shown while locked.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Master all square roots √1 to √144"
+          }
+        }
+      }
+    },
+    "achievement.sqrt_starter.title" : {
+      "comment" : "Mastery achievement title.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Root Starter"
+          }
+        }
+      }
+    },
+    "achievement.sqrt_starter.unlocked" : {
+      "comment" : "Past-tense celebration.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Congratulations! You've mastered all square roots √1 to √144."
+          }
+        }
+      }
+    },
+    "achievement.square_explorer.goal" : {
+      "comment" : "Goal shown while locked.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Master squares from 13² to 99²"
+          }
+        }
+      }
+    },
+    "achievement.square_explorer.title" : {
+      "comment" : "Mastery achievement title.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Square Explorer"
+          }
+        }
+      }
+    },
+    "achievement.square_explorer.unlocked" : {
+      "comment" : "Past-tense celebration.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Congratulations! You've mastered squares from 13² to 99²."
+          }
+        }
+      }
+    },
+    "achievement.square_starter.goal" : {
+      "comment" : "Goal shown while locked.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Master all squares from 1² to 12²"
+          }
+        }
+      }
+    },
+    "achievement.square_starter.title" : {
+      "comment" : "Mastery achievement title.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Square Starter"
+          }
+        }
+      }
+    },
+    "achievement.square_starter.unlocked" : {
+      "comment" : "Past-tense celebration.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Congratulations! You've mastered all squares from 1² to 12²."
+          }
+        }
+      }
+    },
+    "achievement.streak_5.title" : {
+      "comment" : "Streak achievement title.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On Fire"
+          }
+        }
+      }
+    },
+    "achievement.streak_10.title" : {
+      "comment" : "Streak achievement title.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hot Streak"
+          }
+        }
+      }
+    },
+    "achievement.streak_20.title" : {
+      "comment" : "Streak achievement title.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unstoppable"
+          }
+        }
+      }
+    },
+    "achievement.streak_50.title" : {
+      "comment" : "Streak achievement title.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Legendary"
+          }
+        }
+      }
+    },
+    "achievement.streak_100.title" : {
+      "comment" : "Streak achievement title.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Math Master"
+          }
+        }
+      }
+    },
+    "achievement.streak.goal" : {
+      "comment" : "Goal for streak achievements.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get %lld correct answers in a row"
+          }
+        }
+      }
+    },
+    "achievement.streak.unlocked" : {
+      "comment" : "Past-tense celebration for streaks.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Congratulations! You got %lld correct answers in a row."
+          }
+        }
+      }
+    },
+    "achievement.total_10.title" : {
+      "comment" : "Total-correct achievement title.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Getting Started"
+          }
+        }
+      }
+    },
+    "achievement.total_25.title" : {
+      "comment" : "Total-correct achievement title.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quick Learner"
+          }
+        }
+      }
+    },
+    "achievement.total_50.title" : {
+      "comment" : "Total-correct achievement title.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dedicated"
+          }
+        }
+      }
+    },
+    "achievement.total_100.title" : {
+      "comment" : "Total-correct achievement title.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Committed"
+          }
+        }
+      }
+    },
+    "achievement.total_250.title" : {
+      "comment" : "Total-correct achievement title.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expert"
+          }
+        }
+      }
+    },
+    "achievement.total_500.title" : {
+      "comment" : "Total-correct achievement title.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genius"
+          }
+        }
+      }
+    },
+    "achievement.total_1000.title" : {
+      "comment" : "Total-correct achievement title.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Legend"
+          }
+        }
+      }
+    },
+    "achievement.total.goal" : {
+      "comment" : "Goal for total-correct achievements.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Answer %lld questions correctly"
+          }
+        }
+      }
+    },
+    "achievement.total.unlocked" : {
+      "comment" : "Past-tense celebration for total-correct.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Congratulations! You've answered %lld questions correctly."
+          }
+        }
+      }
+    },
+    "Achievements" : {
+      "comment" : "Shown in AchievementsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Achievements"
+          }
+        }
+      }
+    },
+    "Addition" : {
+      "comment" : "Shown in ChatCards.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Addition"
+          }
+        }
+      }
+    },
+    "Addition (X + Y)" : {
+      "comment" : "Shown in MathOperationsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Addition (X + Y)"
+          }
+        }
+      }
+    },
+    "Advanced Operations" : {
+      "comment" : "Shown in MathOperationsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Advanced Operations"
+          }
+        }
+      }
+    },
+    "Appearance" : {
+      "comment" : "Shown in SettingsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appearance"
+          }
+        }
+      }
+    },
+    "Apps from the App Store are licensed to you, not sold. The license lets you use the app on Apple devices you own or control. You may not redistribute, sublicense, or transfer the app except as allowed by law." : {
+      "comment" : "Shown in TermsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apps from the App Store are licensed to you, not sold. The license lets you use the app on Apple devices you own or control. You may not redistribute, sublicense, or transfer the app except as allowed by law."
+          }
+        }
+      }
+    },
+    "Basic Operations" : {
+      "comment" : "Shown in MathOperationsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Basic Operations"
+          }
+        }
+      }
+    },
+    "Because the app does not collect personal data, processing happens on-device only. This includes generating questions, tracking scores, and updating achievements." : {
+      "comment" : "Shown in PrivacyView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Because the app does not collect personal data, processing happens on-device only. This includes generating questions, tracking scores, and updating achievements."
+          }
+        }
+      }
+    },
+    "Best Streak: %lld • Total Correct: %lld" : {
+      "comment" : "Achievements footer.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Best Streak: %lld • Total Correct: %lld"
+          }
+        }
+      }
+    },
+    "bot.achievementAnnouncement" : {
+      "comment" : "Chat announcement. 1: emoji, 2: achievement title, 3: past-tense celebration.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ Achievement unlocked: %2$@\n%3$@"
+          }
+        }
+      }
+    },
+    "bot.correctAnswer" : {
+      "comment" : "Shown after a wrong answer. %lld is the right answer.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The correct answer is %lld"
+          }
+        }
+      }
+    },
+    "bot.encouragementFallback" : {
+      "comment" : "Fallback encouragement on the scoreboard.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keep practicing!"
+          }
+        }
+      }
+    },
+    "bot.letsGo" : {
+      "comment" : "Buddy starts a round.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK, great, let's go!"
+          }
+        }
+      }
+    },
+    "bot.newRound" : {
+      "comment" : "Buddy announces a new round.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starting a new round!"
+          }
+        }
+      }
+    },
+    "bot.onboardingReply" : {
+      "comment" : "Buddy asks the player to send any message to start.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Once ready, reply with any message to begin!"
+          }
+        }
+      }
+    },
+    "bot.onboardingSettings" : {
+      "comment" : "Buddy explains the settings during onboarding.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Before you start, check out the settings to adjust them to your liking. You can find them in the top right corner and you can choose some numbers, operations, and a timer to make the game more fun!"
+          }
+        }
+      }
+    },
+    "bot.playAgain" : {
+      "comment" : "Asked after a round ends.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Would you like to play again?"
+          }
+        }
+      }
+    },
+    "bot.playAgainReply" : {
+      "comment" : "The player's chat reply when they tap Play Again.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes, let's play again"
+          }
+        }
+      }
+    },
+    "bot.readyToBegin" : {
+      "comment" : "Heading on the start card.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ready to begin?"
+          }
+        }
+      }
+    },
+    "bot.scoreSummary" : {
+      "comment" : "End-of-round summary. 1: correct, 2: total, 3: incorrect.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time's up! You answered %1$lld out of %2$lld questions correctly.\nIncorrect answers: %3$lld"
+          }
+        }
+      }
+    },
+    "bot.welcome" : {
+      "comment" : "Buddy's first chat message.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hi! I'm Buddy, your friendly robot. I love maths and I'm keen to learn about the numbers you have on planet Earth, so let's get ready to play! 🌍"
+          }
+        }
+      }
+    },
+    "Cancel" : {
+      "comment" : "Shown in SettingsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        }
+      }
+    },
+    "Changes to this Policy" : {
+      "comment" : "Shown in PrivacyView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Changes to this Policy"
+          }
+        }
+      }
+    },
+    "Chat Options" : {
+      "comment" : "Shown in SettingsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chat Options"
+          }
+        }
+      }
+    },
+    "Children’s Privacy" : {
+      "comment" : "Shown in PrivacyView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Children’s Privacy"
+          }
+        }
+      }
+    },
+    "Choose your math operations:" : {
+      "comment" : "Shown in ChatCards.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose your math operations:"
+          }
+        }
+      }
+    },
+    "Clear" : {
+      "comment" : "Shown in SettingsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear"
+          }
+        }
+      }
+    },
+    "Clear All" : {
+      "comment" : "Shown in NumberSelectionView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear All"
+          }
+        }
+      }
+    },
+    "Clear All Achievements" : {
+      "comment" : "Shown in SettingsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear All Achievements"
+          }
+        }
+      }
+    },
+    "Clear All Scores" : {
+      "comment" : "Shown in SettingsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear All Scores"
+          }
+        }
+      }
+    },
+    "Clear Message History" : {
+      "comment" : "Shown in SettingsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear Message History"
+          }
+        }
+      }
+    },
+    "colorScheme.dark" : {
+      "comment" : "Theme option.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dark"
+          }
+        }
+      }
+    },
+    "colorScheme.light" : {
+      "comment" : "Theme option.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Light"
+          }
+        }
+      }
+    },
+    "colorScheme.system" : {
+      "comment" : "Theme option.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System"
+          }
+        }
+      }
+    },
+    "Contact" : {
+      "comment" : "Shown in PrivacyView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contact"
+          }
+        }
+      }
+    },
+    "Continuous Mode" : {
+      "comment" : "Shown in SettingsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuous Mode"
+          }
+        }
+      }
+    },
+    "Data and Technical Information" : {
+      "comment" : "Shown in TermsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data and Technical Information"
+          }
+        }
+      }
+    },
+    "Data Security" : {
+      "comment" : "Shown in PrivacyView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data Security"
+          }
+        }
+      }
+    },
+    "Difficulty Level" : {
+      "comment" : "Shown in NumberSelectionView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Difficulty Level"
+          }
+        }
+      }
+    },
+    "difficulty.champion" : {
+      "comment" : "Difficulty name.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Champion"
+          }
+        }
+      }
+    },
+    "difficulty.champion.range" : {
+      "comment" : "Difficulty description.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Numbers 1-1,000 • Random"
+          }
+        }
+      }
+    },
+    "difficulty.explorer" : {
+      "comment" : "Difficulty name.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Explorer"
+          }
+        }
+      }
+    },
+    "difficulty.explorer.range" : {
+      "comment" : "Difficulty description.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Numbers 1-100 • Random"
+          }
+        }
+      }
+    },
+    "difficulty.goat" : {
+      "comment" : "Difficulty name (greatest of all time).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GOAT"
+          }
+        }
+      }
+    },
+    "difficulty.goat.range" : {
+      "comment" : "Difficulty description.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Numbers 1-9,999 • Random"
+          }
+        }
+      }
+    },
+    "difficulty.starter" : {
+      "comment" : "Difficulty name.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starter"
+          }
+        }
+      }
+    },
+    "difficulty.starter.range" : {
+      "comment" : "Difficulty description.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Numbers 1-12 • Choose specific numbers"
+          }
+        }
+      }
+    },
+    "Disable All" : {
+      "comment" : "Shown in MathOperationsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disable All"
+          }
+        }
+      }
+    },
+    "Division" : {
+      "comment" : "Shown in ChatCards.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Division"
+          }
+        }
+      }
+    },
+    "Division (X ÷ Y)" : {
+      "comment" : "Shown in MathOperationsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Division (X ÷ Y)"
+          }
+        }
+      }
+    },
+    "Done" : {
+      "comment" : "Shown in AchievementsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        }
+      }
+    },
+    "Duration" : {
+      "comment" : "Shown in SettingsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duration"
+          }
+        }
+      }
+    },
+    "Enable All" : {
+      "comment" : "Shown in MathOperationsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable All"
+          }
+        }
+      }
+    },
+    "Enable Sound" : {
+      "comment" : "Shown in SettingsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable Sound"
+          }
+        }
+      }
+    },
+    "encouragement.1" : {
+      "comment" : "Random encouragement on the scoreboard.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Amazing work! Keep it up! 🌟"
+          }
+        }
+      }
+    },
+    "encouragement.2" : {
+      "comment" : "Random encouragement on the scoreboard.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You're getting better every day! 💪"
+          }
+        }
+      }
+    },
+    "encouragement.3" : {
+      "comment" : "Random encouragement on the scoreboard.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maths champion in the making! 🏆"
+          }
+        }
+      }
+    },
+    "encouragement.4" : {
+      "comment" : "Random encouragement on the scoreboard.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fantastic progress! 🎉"
+          }
+        }
+      }
+    },
+    "encouragement.5" : {
+      "comment" : "Random encouragement on the scoreboard.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keep practicing, you're doing great! ⭐"
+          }
+        }
+      }
+    },
+    "encouragement.6" : {
+      "comment" : "Random encouragement on the scoreboard.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Every question makes you stronger! 🚀"
+          }
+        }
+      }
+    },
+    "encouragement.7" : {
+      "comment" : "Random encouragement on the scoreboard.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You're a math superstar! ✨"
+          }
+        }
+      }
+    },
+    "encouragement.8" : {
+      "comment" : "Random encouragement on the scoreboard.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Practice makes perfect! 🎯"
+          }
+        }
+      }
+    },
+    "End User License Agreement" : {
+      "comment" : "Shown in TermsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "End User License Agreement"
+          }
+        }
+      }
+    },
+    "Except where prohibited by law, liability is limited and may be capped. This means the provider is not responsible for incidental or consequential damages in many cases." : {
+      "comment" : "Shown in TermsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Except where prohibited by law, liability is limited and may be capped. This means the provider is not responsible for incidental or consequential damages in many cases."
+          }
+        }
+      }
+    },
+    "External Services" : {
+      "comment" : "Shown in TermsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "External Services"
+          }
+        }
+      }
+    },
+    "Filter" : {
+      "comment" : "Shown in AchievementsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter"
+          }
+        }
+      }
+    },
+    "For Grown-ups" : {
+      "comment" : "Shown in SettingsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "For Grown-ups"
+          }
+        }
+      }
+    },
+    "Governing Law" : {
+      "comment" : "Shown in TermsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Governing Law"
+          }
+        }
+      }
+    },
+    "Grown-ups: Printable Mltply maths workbooks for Years 1–7, with answers, are available at:" : {
+      "comment" : "Shown in SettingsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grown-ups: Printable Mltply maths workbooks for Years 1–7, with answers, are available at:"
+          }
+        }
+      }
+    },
+    "High Scores" : {
+      "comment" : "Shown in ScoreboardView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "High Scores"
+          }
+        }
+      }
+    },
+    "How We Use Information" : {
+      "comment" : "Shown in PrivacyView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How We Use Information"
+          }
+        }
+      }
+    },
+    "If you do not follow the terms, your license may end. You must remove the app if you transfer the device to someone else when required by the agreement." : {
+      "comment" : "Shown in TermsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If you do not follow the terms, your license may end. You must remove the app if you transfer the device to someone else when required by the agreement."
+          }
+        }
+      }
+    },
+    "If you have questions about privacy, ask a grown-up to contact us through the app’s support channels." : {
+      "comment" : "Shown in PrivacyView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If you have questions about privacy, ask a grown-up to contact us through the app’s support channels."
+          }
+        }
+      }
+    },
+    "Information We Don’t Collect" : {
+      "comment" : "Shown in PrivacyView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information We Don’t Collect"
+          }
+        }
+      }
+    },
+    "Keep practicing to unlock more achievements!" : {
+      "comment" : "Shown in AchievementsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keep practicing to unlock more achievements!"
+          }
+        }
+      }
+    },
+    "Last updated: June 9, 2025" : {
+      "comment" : "Shown in PrivacyView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last updated: June 9, 2025"
+          }
+        }
+      }
+    },
+    "Legal" : {
+      "comment" : "Shown in SettingsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Legal"
+          }
+        }
+      }
+    },
+    "Let's go!" : {
+      "comment" : "Shown in ChatCards.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Let's go!"
+          }
+        }
+      }
+    },
+    "License" : {
+      "comment" : "Shown in TermsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "License"
+          }
+        }
+      }
+    },
+    "Limitation of Liability" : {
+      "comment" : "Shown in TermsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limitation of Liability"
+          }
+        }
+      }
+    },
+    "Local Storage" : {
+      "comment" : "Shown in PrivacyView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Local Storage"
+          }
+        }
+      }
+    },
+    "Math Configuration options" : {
+      "comment" : "Shown in SettingsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Math Configuration options"
+          }
+        }
+      }
+    },
+    "Math Operations" : {
+      "comment" : "Shown in MathOperationsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Math Operations"
+          }
+        }
+      }
+    },
+    "Mltply" : {
+      "comment" : "Shown in ContentView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mltply"
+          }
+        }
+      }
+    },
+    "Multiplication" : {
+      "comment" : "Shown in ChatCards.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Multiplication"
+          }
+        }
+      }
+    },
+    "Multiplication (X × Y)" : {
+      "comment" : "Shown in MathOperationsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Multiplication (X × Y)"
+          }
+        }
+      }
+    },
+    "No scores yet!" : {
+      "comment" : "Shown in ScoreboardView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No scores yet!"
+          }
+        }
+      }
+    },
+    "No Warranty" : {
+      "comment" : "Shown in TermsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Warranty"
+          }
+        }
+      }
+    },
+    "Number Range" : {
+      "comment" : "Shown in NumberSelectionView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Number Range"
+          }
+        }
+      }
+    },
+    "Numbers will be randomly generated from 1 to %@." : {
+      "comment" : "Range explainer. %@ is a formatted number.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Numbers will be randomly generated from 1 to %@."
+          }
+        }
+      }
+    },
+    "operation.addition" : {
+      "comment" : "Name of the addition operation, capitalised.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Addition"
+          }
+        }
+      }
+    },
+    "operation.addition.noun" : {
+      "comment" : "Name of the addition operation inside a sentence.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "addition"
+          }
+        }
+      }
+    },
+    "operation.division" : {
+      "comment" : "Name of the division operation, capitalised.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Division"
+          }
+        }
+      }
+    },
+    "operation.division.noun" : {
+      "comment" : "Name of the division operation inside a sentence.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "division"
+          }
+        }
+      }
+    },
+    "operation.multiplication" : {
+      "comment" : "Name of the multiplication operation, capitalised.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Multiplication"
+          }
+        }
+      }
+    },
+    "operation.multiplication.noun" : {
+      "comment" : "Name of the multiplication operation inside a sentence.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "multiplication"
+          }
+        }
+      }
+    },
+    "operation.square" : {
+      "comment" : "Short name for the squares operation.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Squares"
+          }
+        }
+      }
+    },
+    "operation.squareRoot" : {
+      "comment" : "Short name for the square roots operation.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "√ Roots"
+          }
+        }
+      }
+    },
+    "operation.subtraction" : {
+      "comment" : "Name of the subtraction operation, capitalised.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Subtraction"
+          }
+        }
+      }
+    },
+    "operation.subtraction.noun" : {
+      "comment" : "Name of the subtraction operation inside a sentence.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "subtraction"
+          }
+        }
+      }
+    },
+    "Operations set: %@" : {
+      "comment" : "Confirmation on the operations card. %@ is a list like 'Addition and Subtraction'.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Operations set: %@"
+          }
+        }
+      }
+    },
+    "operations.all" : {
+      "comment" : "Every operation selected.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All operations"
+          }
+        }
+      }
+    },
+    "operations.and" : {
+      "comment" : "Joins a list of operation names. 1: comma-separated names, 2: the last name.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ and %2$@"
+          }
+        }
+      }
+    },
+    "operations.none" : {
+      "comment" : "No operations selected.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "None"
+          }
+        }
+      }
+    },
+    "Order" : {
+      "comment" : "Shown in SettingsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Order"
+          }
+        }
+      }
+    },
+    "Overview" : {
+      "comment" : "Shown in PrivacyView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Overview"
+          }
+        }
+      }
+    },
+    "Personal Best: %lld" : {
+      "comment" : "Scoreboard heading.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personal Best: %lld"
+          }
+        }
+      }
+    },
+    "Play Again" : {
+      "comment" : "Shown in ContentView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Play Again"
+          }
+        }
+      }
+    },
+    "Printable Workbooks" : {
+      "comment" : "Shown in SettingsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Printable Workbooks"
+          }
+        }
+      }
+    },
+    "Privacy Policy" : {
+      "comment" : "Shown in PrivacyView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy Policy"
+          }
+        }
+      }
+    },
+    "Question Order" : {
+      "comment" : "Shown in SettingsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Question Order"
+          }
+        }
+      }
+    },
+    "question.addition" : {
+      "comment" : "Addition question.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What is %1$lld + %2$lld?"
+          }
+        }
+      }
+    },
+    "question.division" : {
+      "comment" : "Division question. 1: dividend, 2: divisor.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What is %1$lld ÷ %2$lld?"
+          }
+        }
+      }
+    },
+    "question.multiplication" : {
+      "comment" : "Multiplication question.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What is %1$lld × %2$lld?"
+          }
+        }
+      }
+    },
+    "question.square" : {
+      "comment" : "Square question.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What is %lld²?"
+          }
+        }
+      }
+    },
+    "question.squareRoot" : {
+      "comment" : "Square root question. %lld is the number under the root.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What is √%lld?"
+          }
+        }
+      }
+    },
+    "question.subtraction" : {
+      "comment" : "Subtraction question.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What is %1$lld - %2$lld?"
+          }
+        }
+      }
+    },
+    "questionMode.ascending" : {
+      "comment" : "Question order: ascending.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ascending"
+          }
+        }
+      }
+    },
+    "questionMode.random" : {
+      "comment" : "Question order: random.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Random"
+          }
+        }
+      }
+    },
+    "Scope and Use" : {
+      "comment" : "Shown in TermsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scope and Use"
+          }
+        }
+      }
+    },
+    "Select All" : {
+      "comment" : "Shown in NumberSelectionView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select All"
+          }
+        }
+      }
+    },
+    "Select Math Operations" : {
+      "comment" : "Shown in SettingsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select Math Operations"
+          }
+        }
+      }
+    },
+    "Select Numbers for Practice" : {
+      "comment" : "Shown in NumberSelectionView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select Numbers for Practice"
+          }
+        }
+      }
+    },
+    "Set Operations" : {
+      "comment" : "Shown in ChatCards.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set Operations"
+          }
+        }
+      }
+    },
+    "Set Timer Options" : {
+      "comment" : "Shown in SettingsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set Timer Options"
+          }
+        }
+      }
+    },
+    "Settings" : {
+      "comment" : "Shown in SettingsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
+          }
+        }
+      }
+    },
+    "Settings, preferences, and question history are stored locally on your device (for iOS this may be in app storage or iCloud, depending on settings). Your content stays on your device unless you explicitly export or share it." : {
+      "comment" : "Shown in PrivacyView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings, preferences, and question history are stored locally on your device (for iOS this may be in app storage or iCloud, depending on settings). Your content stays on your device unless you explicitly export or share it."
+          }
+        }
+      }
+    },
+    "Square Roots (√n)" : {
+      "comment" : "Shown in MathOperationsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Square Roots (√n)"
+          }
+        }
+      }
+    },
+    "Squares" : {
+      "comment" : "Shown in ChatCards.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Squares"
+          }
+        }
+      }
+    },
+    "Squares (n²)" : {
+      "comment" : "Shown in MathOperationsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Squares (n²)"
+          }
+        }
+      }
+    },
+    "Start practicing to see your scores here" : {
+      "comment" : "Shown in ScoreboardView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start practicing to see your scores here"
+          }
+        }
+      }
+    },
+    "Start Quiz" : {
+      "comment" : "Shown in ChatCards.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start Quiz"
+          }
+        }
+      }
+    },
+    "Subtraction" : {
+      "comment" : "Shown in ChatCards.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Subtraction"
+          }
+        }
+      }
+    },
+    "Subtraction (X - Y)" : {
+      "comment" : "Shown in MathOperationsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Subtraction (X - Y)"
+          }
+        }
+      }
+    },
+    "Termination" : {
+      "comment" : "Shown in TermsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Termination"
+          }
+        }
+      }
+    },
+    "Terms of Use" : {
+      "comment" : "Shown in SettingsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terms of Use"
+          }
+        }
+      }
+    },
+    "The agreement includes governing law and dispute clauses that may specify a jurisdiction, often the provider’s home jurisdiction or as otherwise stated in the full license." : {
+      "comment" : "Shown in TermsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The agreement includes governing law and dispute clauses that may specify a jurisdiction, often the provider’s home jurisdiction or as otherwise stated in the full license."
+          }
+        }
+      }
+    },
+    "The app and any updates are covered by the terms here unless a custom license is provided. You should not reverse-engineer, copy, or modify the app unless allowed by law." : {
+      "comment" : "Shown in TermsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The app and any updates are covered by the terms here unless a custom license is provided. You should not reverse-engineer, copy, or modify the app unless allowed by law."
+          }
+        }
+      }
+    },
+    "The app does not integrate with external analytics or tracking services. If any third-party libraries are used, they are for internal functionality and do not send user content off device." : {
+      "comment" : "Shown in PrivacyView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The app does not integrate with external analytics or tracking services. If any third-party libraries are used, they are for internal functionality and do not send user content off device."
+          }
+        }
+      }
+    },
+    "The app does not knowingly collect data from children under 13. Because no personal data is collected, COPPA concerns are limited. Parental supervision is recommended for young children." : {
+      "comment" : "Shown in PrivacyView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The app does not knowingly collect data from children under 13. Because no personal data is collected, COPPA concerns are limited. Parental supervision is recommended for young children."
+          }
+        }
+      }
+    },
+    "The app is provided 'as is'. To the maximum extent allowed by law, there are no warranties. Some jurisdictions may limit this exclusion." : {
+      "comment" : "Shown in TermsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The app is provided 'as is'. To the maximum extent allowed by law, there are no warranties. Some jurisdictions may limit this exclusion."
+          }
+        }
+      }
+    },
+    "The app may provide links or access to third-party services. Those services are outside the app provider’s control; use them at your own risk and follow their terms." : {
+      "comment" : "Shown in TermsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The app may provide links or access to third-party services. Those services are outside the app provider’s control; use them at your own risk and follow their terms."
+          }
+        }
+      }
+    },
+    "The app or its provider may collect technical information (device, system, crash reports) for improving the app. Such information is normally anonymized and used to provide updates and support." : {
+      "comment" : "Shown in TermsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The app or its provider may collect technical information (device, system, crash reports) for improving the app. Such information is normally anonymized and used to provide updates and support."
+          }
+        }
+      }
+    },
+    "Theme" : {
+      "comment" : "Shown in SettingsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Theme"
+          }
+        }
+      }
+    },
+    "Third-Party Services" : {
+      "comment" : "Shown in PrivacyView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Third-Party Services"
+          }
+        }
+      }
+    },
+    "This app is designed with privacy in mind. We do not collect personal information or send your content to external servers. All data used by the app is stored locally on your device." : {
+      "comment" : "Shown in PrivacyView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This app is designed with privacy in mind. We do not collect personal information or send your content to external servers. All data used by the app is stored locally on your device."
+          }
+        }
+      }
+    },
+    "This is a concise summary of the app’s privacy approach. For full details or any legal disclaimers, see the app website." : {
+      "comment" : "Shown in PrivacyView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This is a concise summary of the app’s privacy approach. For full details or any legal disclaimers, see the app website."
+          }
+        }
+      }
+    },
+    "This is a simplified summary of Apple’s standard EULA for apps. For full legal terms, refer to Apple’s official Licensed Application EULA." : {
+      "comment" : "Shown in TermsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This is a simplified summary of Apple’s standard EULA for apps. For full legal terms, refer to Apple’s official Licensed Application EULA."
+          }
+        }
+      }
+    },
+    "This will permanently delete all chat messages. This action cannot be undone." : {
+      "comment" : "Shown in SettingsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This will permanently delete all chat messages. This action cannot be undone."
+          }
+        }
+      }
+    },
+    "This will permanently delete all your achievements and question history. This action cannot be undone." : {
+      "comment" : "Shown in SettingsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This will permanently delete all your achievements and question history. This action cannot be undone."
+          }
+        }
+      }
+    },
+    "This will permanently delete all your high scores. This action cannot be undone." : {
+      "comment" : "Shown in SettingsView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This will permanently delete all your high scores. This action cannot be undone."
+          }
+        }
+      }
+    },
+    "Time: " : {
+      "comment" : "Shown in TimerView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time: "
+          }
+        }
+      }
+    },
+    "Type your answer..." : {
+      "comment" : "Shown in UserInputView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Type your answer..."
+          }
+        }
+      }
+    },
+    "Type your message..." : {
+      "comment" : "Shown in UserInputView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Type your message..."
+          }
+        }
+      }
+    },
+    "We do not collect personal data, usage analytics, account information, or content from your device. No account creation or login is required." : {
+      "comment" : "Shown in PrivacyView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We do not collect personal data, usage analytics, account information, or content from your device. No account creation or login is required."
+          }
+        }
+      }
+    },
+    "We do not transmit data to remote servers. Your data security therefore depends on the device’s security (passcode, Face ID/Touch ID, backups you manage)." : {
+      "comment" : "Shown in PrivacyView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We do not transmit data to remote servers. Your data security therefore depends on the device’s security (passcode, Face ID/Touch ID, backups you manage)."
+          }
+        }
+      }
+    },
+    "We may update this policy from time to time. Any changes will be reflected in the app’s Privacy section with an updated date." : {
+      "comment" : "Shown in PrivacyView.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We may update this policy from time to time. Any changes will be reflected in the app’s Privacy section with an updated date."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
