@@ -37,7 +37,7 @@ class QuizViewModel: ObservableObject {
     @Published var questionHistory = QuestionHistory()
     
     // MARK: - Message Queue System
-    private var messageQueue: [(text: String, accessibilityId: String?)] = []
+    private var messageQueue: [(text: String, accessibilityId: String?, isQuestion: Bool)] = []
     private var isProcessingQueue: Bool = false
     // Bumped whenever the queue is reset so in-flight asyncAfter callbacks from the
     // previous round can detect they're stale and bail out instead of appending late.
@@ -55,8 +55,11 @@ class QuizViewModel: ObservableObject {
     }
     
     // MARK: - Quiz Logic
-    func queueBotMessage(_ text: String, accessibilityId: String? = nil) {
-        messageQueue.append((text: text, accessibilityId: accessibilityId))
+    /// Scales typing and pause delays; tests shrink it so queued messages arrive quickly.
+    var messageDelayScale: Double = 1
+
+    func queueBotMessage(_ text: String, accessibilityId: String? = nil, isQuestion: Bool = false) {
+        messageQueue.append((text: text, accessibilityId: accessibilityId, isQuestion: isQuestion))
         processMessageQueue()
     }
     
@@ -75,7 +78,7 @@ class QuizViewModel: ObservableObject {
         let baseDelay = 1.0
         let typingSpeed = 0.05 // seconds per character
         let delay = baseDelay + (Double(nextMessage.text.count) * typingSpeed)
-        let finalDelay = min(delay, 3.5) // Cap at 3.5 seconds max
+        let finalDelay = min(delay, 3.5) * messageDelayScale // Cap at 3.5 seconds max
         
         DispatchQueue.main.asyncAfter(deadline: .now() + finalDelay) {
             // The queue was reset (e.g. play again / restart) while this was in flight.
@@ -91,11 +94,12 @@ class QuizViewModel: ObservableObject {
             self.messages.append(ChatMessage(
                 text: nextMessage.text, 
                 isUser: false, 
-                accessibilityIdentifier: nextMessage.accessibilityId
+                accessibilityIdentifier: nextMessage.accessibilityId,
+                isQuestion: nextMessage.isQuestion
             ))
             
             // Process next message in queue after a brief pause
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3 * self.messageDelayScale) {
                 guard self.messageQueueGeneration == generation else { return }
                 self.isProcessingQueue = false
                 self.processMessageQueue()
@@ -153,7 +157,7 @@ class QuizViewModel: ObservableObject {
                 incorrectAnswers += 1
                 
                 // Show correct answer
-                queueBotMessage("The correct answer is \(question.answer)")
+                queueBotMessage(BotMessages.correctAnswer(question.answer))
                 
                 // Still check achievements (total correct might have unlocked something)
                 announceNewAchievements()
@@ -164,7 +168,7 @@ class QuizViewModel: ObservableObject {
             if timerActive || continuousMode {
                 let nextQuestion = generateMathQuestion()
                 currentQuestion = nextQuestion
-                queueBotMessage(nextQuestion.question)
+                queueBotMessage(nextQuestion.question, isQuestion: true)
             } else {
                 currentQuestion = nil
             }
@@ -188,9 +192,8 @@ class QuizViewModel: ObservableObject {
         }
         
         let allCorrect = totalQuestions > 0 && correctAnswers == totalQuestions
-        let trophy = allCorrect ? " 🏆" : ""
-        let summary =
-        "Time's up! You answered \(correctAnswers) out of \(totalQuestions) questions correctly.\nIncorrect answers: \(incorrectAnswers)\(trophy)"
+        let summary = BotMessages.scoreSummary(
+            correct: correctAnswers, total: totalQuestions, incorrect: incorrectAnswers, allCorrect: allCorrect)
         queueBotMessage(summary)
         queueBotMessage(BotMessages.playAgain)
         showPlayAgain = true
@@ -198,7 +201,7 @@ class QuizViewModel: ObservableObject {
     
     func playAgain() {
         // Add user message first
-        messages.append(ChatMessage(text: "Yes, lets play again", isUser: true))
+        messages.append(ChatMessage(text: BotMessages.playAgainReply, isUser: true))
         
         correctAnswers = 0
         totalQuestions = 0
@@ -240,7 +243,7 @@ class QuizViewModel: ObservableObject {
         queueBotMessage(BotMessages.letsGo)
         let question = generateMathQuestion()
         currentQuestion = question
-        queueBotMessage(question.question)
+        queueBotMessage(question.question, isQuestion: true)
     }
     
     func handleTimerTick() {
@@ -329,7 +332,7 @@ class QuizViewModel: ObservableObject {
     private func generateSequentialQuestion() -> MathQuestion {
         guard practiceSettings.hasSelectedNumbers else {
             // Fallback if no numbers selected
-            return MathQuestion(question: "What is 6 × 7?", answer: 42, firstNumber: 6, secondNumber: 7, operation: .multiplication)
+            return MathQuestion(question: BotMessages.question(.multiplication, 6, 7), answer: 42, firstNumber: 6, secondNumber: 7, operation: .multiplication)
         }
         
         let currentNumber = practiceSettings.currentNumber
@@ -348,7 +351,7 @@ class QuizViewModel: ObservableObject {
     private func generateRandomQuestion() -> MathQuestion {
         guard practiceSettings.hasSelectedNumbers && mathOperations.hasAtLeastOneEnabled else {
             // Fallback
-            return MathQuestion(question: "What is 6 × 7?", answer: 42, firstNumber: 6, secondNumber: 7, operation: .multiplication)
+            return MathQuestion(question: BotMessages.question(.multiplication, 6, 7), answer: 42, firstNumber: 6, secondNumber: 7, operation: .multiplication)
         }
         
         let difficulty = practiceSettings.difficulty
@@ -381,7 +384,7 @@ class QuizViewModel: ObservableObject {
         if mathOperations.additionEnabled {
             operations.append { num, mult in
                 let answer = num + mult
-                return (.addition, "What is \(num) + \(mult)?", answer, num, mult)
+                return (.addition, BotMessages.question(.addition, num, mult), answer, num, mult)
             }
         }
         
@@ -391,14 +394,14 @@ class QuizViewModel: ObservableObject {
                 let larger = max(num, mult)
                 let smaller = min(num, mult)
                 let answer = larger - smaller
-                return (.subtraction, "What is \(larger) - \(smaller)?", answer, larger, smaller)
+                return (.subtraction, BotMessages.question(.subtraction, larger, smaller), answer, larger, smaller)
             }
         }
         
         if mathOperations.multiplicationEnabled {
             operations.append { num, mult in
                 let answer = num * mult
-                return (.multiplication, "What is \(num) × \(mult)?", answer, num, mult)
+                return (.multiplication, BotMessages.question(.multiplication, num, mult), answer, num, mult)
             }
         }
         
@@ -422,7 +425,7 @@ class QuizViewModel: ObservableObject {
                 }
                 
                 let dividend = divisor * quotient
-                return (.division, "What is \(dividend) ÷ \(divisor)?", quotient, dividend, divisor)
+                return (.division, BotMessages.question(.division, dividend, divisor), quotient, dividend, divisor)
             }
         }
         
@@ -431,7 +434,7 @@ class QuizViewModel: ObservableObject {
                 // Cap at 99 to avoid overflow (99² = 9801)
                 let base = min(num, 99)
                 let answer = base * base
-                return (.square, "What is \(base)²?", answer, base, base)
+                return (.square, BotMessages.question(.square, base, base), answer, base, base)
             }
         }
         
@@ -441,7 +444,7 @@ class QuizViewModel: ObservableObject {
                 // Cap at 99 so √9801 = 99
                 let root = min(num, 99)
                 let radicand = root * root
-                return (.squareRoot, "What is √\(radicand)?", root, radicand, root)
+                return (.squareRoot, BotMessages.question(.squareRoot, radicand, root), root, radicand, root)
             }
         }
         
@@ -449,7 +452,7 @@ class QuizViewModel: ObservableObject {
         if operations.isEmpty {
             operations.append { num, mult in
                 let answer = num * mult
-                return (.multiplication, "What is \(num) × \(mult)?", answer, num, mult)
+                return (.multiplication, BotMessages.question(.multiplication, num, mult), answer, num, mult)
             }
         }
         

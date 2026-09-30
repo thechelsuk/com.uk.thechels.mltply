@@ -7,6 +7,8 @@ struct ChatMessage: Identifiable, Equatable {
     var isTypingIndicator: Bool = false
     var tapback: Tapback? = nil
     var accessibilityIdentifier: String? = nil
+    /// True for Buddy's maths questions, so styling never depends on the wording.
+    var isQuestion: Bool = false
 }
 
 enum Tapback: String {
@@ -41,6 +43,26 @@ struct MathOperationSettings: Equatable, Codable {
     var hasAtLeastOneEnabled: Bool {
         return additionEnabled || subtractionEnabled || multiplicationEnabled || divisionEnabled || squareEnabled || squareRootEnabled
     }
+
+    /// Human-readable list of the enabled operations, e.g. "Addition and Subtraction".
+    var summary: String {
+        var names: [String] = []
+        if additionEnabled { names.append(String(localized: .operationAddition)) }
+        if subtractionEnabled { names.append(String(localized: .operationSubtraction)) }
+        if multiplicationEnabled { names.append(String(localized: .operationMultiplication)) }
+        if divisionEnabled { names.append(String(localized: .operationDivision)) }
+        if squareEnabled { names.append(String(localized: .operationSquare)) }
+        if squareRootEnabled { names.append(String(localized: .operationSquareRoot)) }
+
+        switch names.count {
+        case 0: return String(localized: .operationsNone)
+        case 1: return names[0]
+        case 6: return String(localized: .operationsAll)
+        default:
+            let allButLast = names.dropLast().joined(separator: ", ")
+            return String(localized: .operationsAnd(allButLast, names.last!))
+        }
+    }
 }
 
 public enum QuestionMode: String, CaseIterable, Identifiable, Codable {
@@ -51,8 +73,8 @@ public enum QuestionMode: String, CaseIterable, Identifiable, Codable {
 
     public var displayName: String {
         switch self {
-        case .random: return "Random"
-        case .sequential: return "Ascending"
+        case .random: return String(localized: .questionModeRandom)
+        case .sequential: return String(localized: .questionModeAscending)
         }
     }
 
@@ -74,10 +96,10 @@ public enum NumberDifficulty: String, CaseIterable, Identifiable, Codable {
 
     public var displayName: String {
         switch self {
-        case .starter: return "Starter"
-        case .explorer: return "Explorer"
-        case .champion: return "Champion"
-        case .goat: return "GOAT"
+        case .starter: return String(localized: .difficultyStarter)
+        case .explorer: return String(localized: .difficultyExplorer)
+        case .champion: return String(localized: .difficultyChampion)
+        case .goat: return String(localized: .difficultyGoat)
         }
     }
 
@@ -107,10 +129,10 @@ public enum NumberDifficulty: String, CaseIterable, Identifiable, Codable {
     /// Description of the number range for UI display
     public var rangeDescription: String {
         switch self {
-        case .starter: return "Numbers 1-12 • Choose specific numbers"
-        case .explorer: return "Numbers 1-100 • Random"
-        case .champion: return "Numbers 1-1,000 • Random"
-        case .goat: return "Numbers 1-9,999 • Random"
+        case .starter: return String(localized: .difficultyStarterRange)
+        case .explorer: return String(localized: .difficultyExplorerRange)
+        case .champion: return String(localized: .difficultyChampionRange)
+        case .goat: return String(localized: .difficultyGoatRange)
         }
     }
 }
@@ -177,9 +199,9 @@ enum AppColorScheme: String, CaseIterable, Identifiable {
     var id: String { rawValue }
     var displayName: String {
         switch self {
-        case .system: return "System"
-        case .light: return "Light"
-        case .dark: return "Dark"
+        case .system: return String(localized: .colorSchemeSystem)
+        case .light: return String(localized: .colorSchemeLight)
+        case .dark: return String(localized: .colorSchemeDark)
         }
     }
     var colorScheme: ColorScheme? {

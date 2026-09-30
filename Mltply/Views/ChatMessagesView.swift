@@ -55,7 +55,7 @@ struct ChatMessagesView: View {
 
                                     if message.isTypingIndicator {
                                         TypingIndicatorView()
-                                    } else if isQuizQuestion(message: message) {
+                                    } else if message.isQuestion {
                                         Text(message.text)
                                             .accessibilityIdentifier("questionLabel")
                                             .padding(12)
@@ -121,13 +121,6 @@ struct ChatMessagesView: View {
             }
         }
     }
-}
-
-// Helper to detect quiz questions
-private func isQuizQuestion(message: ChatMessage) -> Bool {
-    guard !message.isUser, !message.isTypingIndicator else { return false }
-    // Heuristic: math questions always start with "What is " and end with "?"
-    return message.text.hasPrefix("What is ") && message.text.hasSuffix("?")
 }
 
 struct TypingIndicatorView: View {
