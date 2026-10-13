@@ -1,0 +1,21 @@
+# Push to main with "[Release]" in the commit message to ship to App Store Connect.
+# See https://github.com/thechelsuk/apple-release
+name: App Store Release
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  release:
+    if: contains(github.event.head_commit.message, '[Release]')
+    uses: thechelsuk/apple-release/.github/workflows/release.yml@main
+    permissions:
+      contents: write
+    with:
+      bundle-id: TheChelsUK.Mltply
+      project: "Mltply.xcodeproj"
+    secrets:
+      ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+      ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+      ASC_PRIVATE_KEY: ${{ secrets.ASC_PRIVATE_KEY }}
