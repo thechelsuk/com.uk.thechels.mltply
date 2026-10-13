@@ -105,6 +105,19 @@ struct ContentView: View {
             viewModel.handleTimerTick()
         }
         .onAppear {
+            #if DEBUG
+            if Demo.isOn {
+                Demo.play(viewModel) {
+                    switch Demo.screen {
+                    case "settings": viewModel.showSettings = true
+                    case "scoreboard": showingScoreboard = true
+                    case "achievements": showingAchievements = true
+                    default: break
+                    }
+                }
+                return
+            }
+            #endif
             viewModel.resetForWelcome()
         }
         .onChange(of: viewModel.timerDuration) { _, newValue in

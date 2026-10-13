@@ -101,6 +101,9 @@ class QuizViewModel: ObservableObject {
         }
     }
     
+    /// True once every queued message has been shown.
+    var isMessageQueueIdle: Bool { !isProcessingQueue && messageQueue.isEmpty }
+
     private func resetMessageQueue() {
         messageQueue.removeAll()
         isProcessingQueue = false
