@@ -120,6 +120,9 @@ final class LocalizationTests: XCTestCase {
     private func loadCatalog() throws -> Catalog {
         let root = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent()
         let url = root.appendingPathComponent("Mltply/Localizable.xcstrings")
+        // Xcode Cloud runs tests on a machine without the source tree.
+        try XCTSkipUnless(FileManager.default.fileExists(atPath: url.path),
+                          "Source catalog not available (e.g. Xcode Cloud test runner)")
         return try JSONDecoder().decode(Catalog.self, from: Data(contentsOf: url))
     }
 
