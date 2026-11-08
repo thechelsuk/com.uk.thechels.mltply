@@ -1,5 +1,5 @@
 // Demo.swift
-// Screenshot mode, for tools/screenshots.sh. Debug builds only.
+// Screenshot mode, for tools/app-store-art capture. Debug builds only.
 //
 // `-demo` plays a short round by itself, answering through the quiz's real logic (one answer wrong), so the chat,
 // scores and achievements fill in just as they would for a child. `-screen settings|scoreboard|achievements` then

@@ -1,16 +1,16 @@
 # Mltply: custom product pages
 
 App Store Connect › Growth & Marketing › Custom Product Pages. Each page leads with one reason to download, for one
-kind of parent; the default page (Description.md) stays the broad pitch. Artwork comes from `tools/cpp.py`, into
-`screenshots/cpp/<page>/`, made from the captures `tools/screenshots.sh` takes in demo mode. Keep British spelling,
+kind of parent; the default page (Description.md) stays the broad pitch. Artwork comes from `tools/app-store-art`, into
+`screenshots/cpp/<page>/`, made from the captures `tools/app-store-art capture` takes in demo mode. Keep British spelling,
 and keep it suitable for children: no claims about results or school outcomes.
 
 | Field | File or limit |
 |---|---|
 | Header | `header-5244x2950.png` (laid out for iPhone's crop) or `header-3840x1646.png` (Apple's header template safe area) |
 | Search results | Leave empty: search then shows the page's first screenshots, which suits a portrait app better |
-| iPhone 6.1" or 6.3" screenshots | `iphone-6.3-01…04-….png` (1206 × 2622), in order |
-| iPad 13" screenshots | `ipad-13-01…04-….png` (2064 × 2752), in order |
+| iPhone screenshots | `iphone-6.9/01…04-….png` (1320 × 2868), in order. ASC scales them for smaller iPhones, and rejects a 6.3" set at 1206 × 2622 |
+| iPad 13" screenshots | `ipad-13/01…04-….png` (2064 × 2752), in order |
 | Second iPhone size (2034 × 1398 or 2853 × 2007) | Leave empty if optional: there's no simulator for that display to capture from |
 | Deep link | Leave blank: the app has no links to a screen |
 | Promotional text | 170 characters at most |
@@ -19,7 +19,7 @@ and keep it suitable for children: no claims about results or school outcomes.
 ## Default page
 
 The main product page takes a header too: `screenshots/cpp/default/` (the chat). Leave its search results empty, as
-on the custom pages. Its default screenshots are rebuilt too, in `screenshots/appstore/` (6.9", 6.5", 6.3", and 13"
+on the custom pages. Its default screenshots are rebuilt too, in `screenshots/appstore/` (6.9", 6.5", and 13"
 and 12.9" iPad); its text and keywords stay as they are in Description.md.
 
 ## Times tables

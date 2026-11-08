@@ -1,0 +1,206 @@
+# Mltply's App Store art, rendered by the shared tool (~/Source/Releases/app-store-art; format in its README).
+# The app icon's orange dots and yellow and lime bars, floating on warm white. Each device's layout is designed at
+# one size and scaled to the others. Run it with tools/app-store-art.
+
+[app]
+name = "Mltply"
+
+[look]
+head = '<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;900&display=block" rel="stylesheet">'
+
+[vars]
+INK = "#2b2622"
+ORANGE = "#ff8d28"
+YELLOW = "#ffcc00"
+LIME = "#b8ff50"
+PAPER = "#fbf8f2"
+
+# the icon's pieces: two orange dots, a yellow bar and a lime bar, half off the edges, at scale s
+[snippets.shapes]
+args = "s"
+html = '''<div class="dot" style="width:${230 * s}px;height:${230 * s}px;right:${-60 * s}px;top:${120 * s}px"></div>
+<div class="bar" style="background:${YELLOW};width:${520 * s}px;height:${150 * s}px;right:${-230 * s}px;top:${420 * s}px;transform:rotate(-8deg)"></div>
+<div class="bar" style="background:${LIME};width:${150 * s}px;height:${560 * s}px;left:${-70 * s}px;bottom:${260 * s}px;transform:rotate(24deg)"></div>
+<div class="dot" style="width:${170 * s}px;height:${170 * s}px;left:${90 * s}px;bottom:${90 * s}px"></div>'''
+
+[layouts.device]
+css = '''html{background:${PAPER}}
+body{width:${W}px;height:${H}px;overflow:hidden;position:relative;font-family:Nunito,sans-serif;zoom:${size[0] / W};background:${PAPER}}
+.dot{position:absolute;border-radius:50%;background:${ORANGE};opacity:.85}
+.bar{position:absolute;border-radius:${24 * shape}px;opacity:.85}
+h1{position:absolute;left:110px;right:300px;top:${text_top}px;font:900 ${h1_size}px/1.04 Nunito,sans-serif;letter-spacing:-.02em;color:${INK}}
+h1 b{color:${ORANGE};font-weight:900}
+p{position:absolute;left:114px;right:320px;top:${sub_top}px;font-size:${sub_size}px;font-weight:600;line-height:1.32;color:#6b625a}
+.phone{position:absolute;left:50%;top:${device_top}px;width:${device_w}px;transform:translateX(-50%);border-radius:${radius}px;
+  padding:22px;background:#1c1c1e;box-shadow:0 0 0 4px #2c2c2e, 0 60px 140px rgba(80,50,20,.28)}
+.phone img{display:block;width:100%;border-radius:${radius - 20}px}'''
+body = '''${shapes(shape)}
+<h1>${title}</h1><p>${sub}</p>
+<div class="phone"><img src="${shot}"></div>'''
+
+[layouts.iphone]
+extends = "device"
+design = [1320, 2868]
+h1_size = 120
+sub_size = 50
+text_top = 190
+sub_top = 480
+device_top = 760
+device_w = 1010
+radius = 118
+shape = 1
+
+[layouts.ipad]
+extends = "device"
+design = [2064, 2752]
+h1_size = 140
+sub_size = 58
+text_top = 190
+sub_top = 540
+device_top = 820
+device_w = 1640
+radius = 64
+shape = 1.4
+
+[snippets.piece]
+args = "colour, left, top, width, height, turn, round_"
+html = '<div style="position:absolute;background:${colour};opacity:.85;left:${left}px;top:${top}px;width:${width}px;height:${height}px;border-radius:${round_};transform:rotate(${turn}deg)"></div>'
+
+# Product page art: the headline on the left of the safe area and the phone on its right, running off its bottom
+# edge, with the icon's dots and bars around them. No search results image: without one, search shows the page's
+# first screenshots, which suits a portrait app better.
+[layouts.header]
+css = '''body{width:${W}px;height:${H}px;overflow:hidden;position:relative;background:${PAPER}}
+h1{position:absolute;left:${x0}px;width:${w * .62}px;top:${(y0 + y1) / 2}px;transform:translateY(-50%);
+  font:900 ${w * .074}px/1.04 Nunito,sans-serif;letter-spacing:-.02em;color:${INK}}
+h1 b{color:${ORANGE};font-weight:900}
+.phone{position:absolute;left:${x0 + w * .67}px;top:${y0 + (y1 - y0) * .02}px;width:${w * .3}px;transform:rotate(-5deg);
+  border-radius:${w * .045}px;padding:${w * .009}px;background:#1c1c1e;
+  box-shadow:0 0 0 ${w * .002}px #2c2c2e, 0 ${w * .028}px ${w * .065}px rgba(80,50,20,.28)}
+.phone img{display:block;width:100%;border-radius:${w * .037}px}'''
+body = '''${piece(ORANGE, x0 + w * .52, y0 - w * .02, w * .1, w * .1, 0, "50%")}${piece(YELLOW, x1 + w * .02, y0 + w * .06, w * .32, w * .09, -8, f"{w * .015}px")}${piece(LIME, x0 - w * .2, y0 + w * .12, w * .09, w * .34, 24, f"{w * .015}px")}${piece(ORANGE, x0 - w * .02, y1 + w * .02, w * .07, w * .07, 0, "50%")}
+<h1>${title}</h1>
+<div class="phone"><img src="${shot}"></div>'''
+
+# (screen, headline with the key words in <b>, small line under it)
+[[slides.main]]
+screen = "chat"
+title = "Maths, but<br><b>it’s a chat</b>"
+sub = "Buddy asks, your child answers, one message at a time"
+
+[[slides.main]]
+screen = "timed"
+title = "Beat<br><b>the clock</b>"
+sub = "Two minutes on the timer, or keep going as long as you like"
+
+[[slides.main]]
+screen = "settings"
+title = "Pick the<br><b>numbers</b>"
+sub = "Times tables, adding, taking away and dividing, at their pace"
+
+[[slides.main]]
+screen = "achievements"
+title = "Earn<br><b>achievements</b>"
+sub = "Streaks and milestones that celebrate every right answer"
+
+[[slides.main]]
+screen = "scoreboard"
+title = "Watch them<br><b>improve</b>"
+sub = "Every round on the scoreboard, with a personal best to beat"
+
+[[frame]]
+raw = ""
+sizes = ["6.9", "6.5"]
+layout = "iphone"
+
+[[frame]]
+raw = "ipad"
+sizes = ["ipad-13", "ipad-12.9"]
+layout = "ipad"
+
+# Custom product pages: the copy (promotional text, keywords) is in custom-product-pages.md
+[cpp]
+layout = "header"
+sizes = ["header-5244x2950", "header-3840x1646"]
+devices = [
+  { folder = "iphone-6.9", raw = "", size = "6.9", layout = "iphone" },
+  { folder = "ipad-13", raw = "ipad", size = "ipad-13", layout = "ipad" },
+]
+
+[[cpp.pages]]
+name = "default"
+screen = "chat"
+title = "Maths that feels<br><b>like a chat</b>"
+
+[[cpp.pages]]
+name = "times-tables"
+screen = "chat"
+title = "Times tables,<br><b>one text at a time</b>"
+slides = [
+  { screen = "chat", title = "Times tables,<br><b>by text</b>", sub = "Buddy asks, your child answers, and every right answer gets a cheer" },
+  { screen = "settings", title = "Choose<br><b>the tables</b>", sub = "Practise any numbers from 1 to 12, in order or mixed up" },
+  { screen = "achievements", title = "Earn<br><b>achievements</b>", sub = "Streaks and milestones that celebrate every right answer" },
+  { screen = "scoreboard", title = "Watch them<br><b>improve</b>", sub = "Every round on the scoreboard, with a personal best to beat" },
+]
+
+[[cpp.pages]]
+name = "practice"
+screen = "settings"
+title = "Daily maths,<br><b>no distractions</b>"
+slides = [
+  { screen = "settings", title = "Pick the<br><b>numbers</b>", sub = "Adding, taking away, times and dividing, at their pace" },
+  { screen = "chat", title = "Maths, but<br><b>it’s a chat</b>", sub = "Buddy asks, your child answers, one message at a time" },
+  { screen = "scoreboard", title = "Watch them<br><b>improve</b>", sub = "Every round on the scoreboard, with a personal best to beat" },
+  { screen = "achievements", title = "Earn<br><b>achievements</b>", sub = "Streaks and milestones that celebrate every right answer" },
+]
+
+[[cpp.pages]]
+name = "challenge"
+screen = "timed"
+title = "Beat<br><b>the clock</b>"
+slides = [
+  { screen = "timed", title = "Beat<br><b>the clock</b>", sub = "Two minutes to answer as many as they can" },
+  { screen = "scoreboard", title = "Beat your<br><b>personal best</b>", sub = "Every round on the scoreboard, best first" },
+  { screen = "achievements", title = "Keep<br><b>the streak</b>", sub = "Five in a row, ten, twenty, and on up to a hundred" },
+  { screen = "settings", title = "Up to<br><b>GOAT level</b>", sub = "Starter, Explorer, Champion and GOAT, with numbers up to 9,999" },
+]
+
+# Capture: demo mode is Mltply/Helpers/Demo.swift
+[builds.ios]
+scheme = "Mltply"
+
+[capture]
+bundle_id = "TheChelsUK.Mltply"
+fresh_install = true   # a fresh install each time, so one screen's round doesn't carry into the next
+wait = 9
+appearance = "light"
+
+[capture.devices.iphone]
+simulator = "iPhone 18 Pro"
+raw = ""
+default = true
+
+[capture.devices.ipad]
+simulator = "iPad Pro 13-inch"
+raw = "ipad"
+default = true
+
+[[capture.screens.main]]
+name = "chat"
+args = ["-demo"]
+
+[[capture.screens.main]]
+name = "timed"
+args = ["-demo", "-timed"]
+
+[[capture.screens.main]]
+name = "settings"
+args = ["-demo", "-screen", "settings"]
+
+[[capture.screens.main]]
+name = "scoreboard"
+args = ["-demo", "-screen", "scoreboard"]
+
+[[capture.screens.main]]
+name = "achievements"
+args = ["-demo", "-screen", "achievements"]
