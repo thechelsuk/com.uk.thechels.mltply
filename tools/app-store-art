@@ -1,12 +1,12 @@
 #!/bin/zsh
 # App Store screenshots and product page art for this app, from tools/app-store-art.toml, made by the shared tool
-# in ~/Source/marketing/app-store-art (github.com/thechelsuk/app-store-art; set APP_STORE_ART to use another copy).
+# in ~/Source/tooling/app-store-art (github.com/thechelsuk/app-store-art; set APP_STORE_ART to use another copy).
 #
 #   tools/app-store-art capture [device ...]     build, capture the demo screens on a simulator, render everything
 #   tools/app-store-art render                   render again from screenshots/raw
 #   tools/app-store-art mac                      capture the Mac app's demo screens, render
 #   tools/app-store-art check-listing            the App Store text against App Store Connect's limits
 #   tools/app-store-art --help                   everything else
-tool=${APP_STORE_ART:-$HOME/Source/marketing/app-store-art}
+tool=${APP_STORE_ART:-$HOME/Source/tooling/app-store-art}
 [[ -f $tool/art.py ]] || { echo "app-store-art isn't at $tool: clone thechelsuk/app-store-art there, or set APP_STORE_ART" >&2; exit 1; }
 exec python3 $tool/art.py --app "${0:A:h}/.." "$@"
