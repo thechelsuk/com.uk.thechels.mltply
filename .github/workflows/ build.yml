@@ -3,6 +3,7 @@ name: Run Unit Tests
 on:
     pull_request:
         branches: main
+    workflow_dispatch:
 
 permissions:
     contents: read
@@ -24,13 +25,21 @@ jobs:
               run: |
                   brew install xcbeautify || true
 
+            # Pick an installed iPhone simulator, since the runner's Xcode decides which exist.
+            - name: Pick a simulator
+              id: sim
+              run: |
+                  UDID=$(xcrun simctl list devices available -j | jq -r '[.devices | to_entries[] | select(.key | contains("iOS")) | .value[] | select(.name | startswith("iPhone"))][0].udid')
+                  echo "Using simulator $UDID"
+                  echo "udid=$UDID" >> "$GITHUB_OUTPUT"
+
             - name: Build
               run: |
-                  xcodebuild build -project Mltply.xcodeproj -scheme MltplyUnitTests -destination 'platform=iOS Simulator,name=iPhone 15,OS=latest'
+                  xcodebuild build -project Mltply.xcodeproj -scheme MltplyUnitTests -destination "id=${{ steps.sim.outputs.udid }}"
 
             - name: Run tests
               run: |
-                  xcodebuild test -project Mltply.xcodeproj -scheme MltplyUnitTests -destination 'platform=iOS Simulator,name=iPhone 15,OS=latest' -resultBundlePath TestResults | xcbeautify
+                  xcodebuild test -project Mltply.xcodeproj -scheme MltplyUnitTests -destination "id=${{ steps.sim.outputs.udid }}" -resultBundlePath TestResults | xcbeautify
 
             - name: Upload test results
               if: always()
