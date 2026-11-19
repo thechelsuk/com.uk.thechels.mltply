@@ -260,3 +260,22 @@ args = ["-demo", "-screen", "achievements"]
 [listing]
 file = "docs/app-listing.md"
 format = "app-listing"
+
+# the advert card, its project page banner on thechels.uk (tools/app-store-art social-card)
+[social]
+slug = "mltply"
+icon = "screenshots/site/icon.png"
+screen = "screenshots/raw/chat.png"
+device = "phone"
+eyebrow = "Maths for kids"
+headline = "Free app + <em>printable workbooks</em>"
+sub = "Times tables, Years 1 to 7."
+facts = ["Free", "iPhone & iPad", "No ads"]
+bg = "${PAPER}"
+ink = "${INK}"
+accent = "${ORANGE}"
+muted = "#6b625a"
+font_head = "'Nunito', sans-serif"
+font_body = "'Nunito', sans-serif"
+head = '<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;900&display=block" rel="stylesheet">'
+css = "h1{font-weight:900}.glow{background:${LIME};opacity:.5}"
