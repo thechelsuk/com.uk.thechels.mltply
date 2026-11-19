@@ -21,7 +21,8 @@ Mltply is a conversational math quiz app for kids, featuring a chat-style interf
 Run `tools/app-store-art capture` to produce them. It builds the app, runs it in demo mode on a 6.3" iPhone and a 13" iPad
 simulator, captures five screens, then frames them in the colours of the app icon (`tools/app-store-art.toml`, rendered by the shared app-store-art tool). Use
 `tools/app-store-art render` to reframe existing captures after changing a caption; it also makes the custom
-product pages from the same captures (see [custom-product-pages.md](custom-product-pages.md)).
+product pages from the same captures. The App Store listing, screenshot sizes and product pages are in
+[docs/app-listing.md](docs/app-listing.md).
 
 Demo mode is the `-demo` launch argument, in debug builds only (see `Mltply/Helpers/Demo.swift`): Buddy plays a short
 round by itself through the quiz's real logic, with one answer wrong. `-screen settings|scoreboard|achievements`

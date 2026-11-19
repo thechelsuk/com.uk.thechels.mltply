@@ -66,6 +66,36 @@ shape = 1.4
 args = "colour, left, top, width, height, turn, round_"
 html = '<div style="position:absolute;background:${colour};opacity:.85;left:${left}px;top:${top}px;width:${width}px;height:${height}px;border-radius:${round_};transform:rotate(${turn}deg)"></div>'
 
+# iPhone Duo's outer screen: shorter, so a smaller headline and the phone higher up
+[layouts.duo-cover]
+extends = "device"
+design = [1398, 2034]
+h1_size = 106
+sub_size = 44
+text_top = 140
+sub_top = 380
+device_top = 600
+device_w = 1080
+radius = 104
+shape = 0.85
+
+# iPhone Duo unfolded: headline and line on the left, the whole inner screen on the right, with the icon's dots and
+# bars around them
+[layouts.duo]
+design = [2853, 2007]
+css = '''html{background:${PAPER}}
+body{width:${W}px;height:${H}px;overflow:hidden;position:relative;font-family:Nunito,sans-serif;zoom:${size[0] / W};background:${PAPER}}
+.head{position:absolute;left:140px;width:${W * .34}px;top:50%;transform:translateY(-50%)}
+h1{font:900 136px/1.04 Nunito,sans-serif;letter-spacing:-.02em;color:${INK}}
+h1 b{color:${ORANGE};font-weight:900}
+p{margin-top:48px;font-size:58px;font-weight:600;line-height:1.32;color:#6b625a}
+.phone{position:absolute;right:${W * .04}px;top:50%;width:${W * .55}px;transform:translateY(-50%);border-radius:72px;
+  padding:22px;background:#1c1c1e;box-shadow:0 0 0 4px #2c2c2e, 0 60px 140px rgba(80,50,20,.28)}
+.phone img{display:block;width:100%;border-radius:52px}'''
+body = '''${piece(ORANGE, W * .36, 110, 260, 260, 0, "50%")}${piece(YELLOW, W * .82, H * .8, 640, 180, -8, "30px")}${piece(LIME, 60, -160, 180, 640, 24, "30px")}${piece(ORANGE, 120, H - 260, 190, 190, 0, "50%")}
+<div class="head"><h1>${title}</h1><p>${sub}</p></div>
+<div class="phone"><img src="${shot}"></div>'''
+
 # Product page art: the headline on the left of the safe area and the phone on its right, running off its bottom
 # edge, with the icon's dots and bars around them. No search results image: without one, search shows the page's
 # first screenshots, which suits a portrait app better.
@@ -110,21 +140,33 @@ sub = "Every round on the scoreboard, with a personal best to beat"
 
 [[frame]]
 raw = ""
-sizes = ["6.9", "6.5"]
+sizes = ["6.3"]
 layout = "iphone"
 
 [[frame]]
 raw = "ipad"
-sizes = ["ipad-13", "ipad-12.9"]
+sizes = ["ipad-13"]
 layout = "ipad"
 
-# Custom product pages: the copy (promotional text, keywords) is in custom-product-pages.md
+[[frame]]
+raw = "duo"
+sizes = ["duo"]
+layout = "duo"
+
+[[frame]]
+raw = "duo-cover"
+sizes = ["duo-cover"]
+layout = "duo-cover"
+
+# Custom product pages: the copy (promotional text, keywords) is in docs/app-listing.md, §10
 [cpp]
 layout = "header"
 sizes = ["header-5244x2950", "header-3840x1646"]
 devices = [
-  { folder = "iphone-6.9", raw = "", size = "6.9", layout = "iphone" },
+  { folder = "iphone-6.3", raw = "", size = "6.3", layout = "iphone" },
   { folder = "ipad-13", raw = "ipad", size = "ipad-13", layout = "ipad" },
+  { folder = "duo", raw = "duo", size = "duo", layout = "duo" },
+  { folder = "duo-cover", raw = "duo-cover", size = "duo-cover", layout = "duo-cover" },
 ]
 
 [[cpp.pages]]
@@ -185,6 +227,16 @@ simulator = "iPad Pro 13-inch"
 raw = "ipad"
 default = true
 
+[capture.devices.duo]       # the inner screen: unfold it in Simulator first
+simulator = "iPhone Duo"
+display = 3
+raw = "duo"
+
+[capture.devices.duo-cover]
+simulator = "iPhone Duo"
+display = 1
+raw = "duo-cover"
+
 [[capture.screens.main]]
 name = "chat"
 args = ["-demo"]
@@ -204,3 +256,7 @@ args = ["-demo", "-screen", "scoreboard"]
 [[capture.screens.main]]
 name = "achievements"
 args = ["-demo", "-screen", "achievements"]
+
+[listing]
+file = "docs/app-listing.md"
+format = "app-listing"
